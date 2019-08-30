@@ -20,3 +20,7 @@ app.get('/', function(req, res) {
     res.sendFile(`${base}/index.html`);
 })
 
+app.get('*', (req, res) => {
+    console.log('Loading 404.');
+    res.sendFile(`${base}/404.html`);
+});
