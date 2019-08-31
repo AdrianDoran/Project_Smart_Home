@@ -11,21 +11,24 @@
                   .controller('loginController', ['$scope', function($scope) {
                     $scope.user = {name: 'username', password: ''};
                     $scope.authenticate = function($scope) {
-                        $scope.post("API URL", $scope.user)
-                        .then(Response => {
-                            if(Response.success)
+                        $scope.post("localhost:5000/api/authenticate", $scope.user)
+                        .then(document => {
+                            console.log(document);
+                            if(document.success)
                             {
                                 $scope.authenticated = true;
                                 var userDetails = $scope.user;
+                                // Add to local storage.
                             }
                         }
-                        )
+                        
+                        ).catch("Error");
                     }
                   }]);
              </script>
       <h1>Login</h1>
       <div ng-controller = "loginController">
-          <form>
+          <form name="myForm">
         <label>Username:
             <input type="text" name="username" ng-model="user.name" required>
         </label>
@@ -38,7 +41,7 @@
         <div role="alert">
                 <span class="error" ng-show="myForm.password.$error.required">Required!</span>
         </div>
-        <button type="button" mdbBtn color="primary" mdbWavesEffect ng-click="authenticate">Login</button>
+        <button type="button" mdbBtn color="primary" mdbWavesEffect ng-click=authenticate>Login</button>
 
     </form>
   </div> 
