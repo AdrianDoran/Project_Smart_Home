@@ -2,9 +2,9 @@ const User = require('./models/user');
 const express = require('express');
 var bodyparser = require('body-parser');
 const mongoose = require('mongoose');
-
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+const app = express();
+app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.json());
 app.use(express.static(`${__dirname}/public`));
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
@@ -28,4 +28,14 @@ app.get('/api/test', (req, res) => {
   app.listen(port, () => {
     console.log(`listening on port ${port}`);
   });
+/**
+ * @api {get} /api/authenticate Check if angular frontend is sending our request.
+ * @apiGroup Test
+ *
+ * @apiSuccess {String} Authentication request received..
+ * @apiError {null} No response.
+ */
+app.get('/api/authenticate', (req, res) => {
+    res.send("Authentication request recieved.");
+})
 
