@@ -10,8 +10,8 @@
                 angular.module('login', [])
                   .controller('loginController', ['$scope', function($scope) {
                     $scope.user = {name: 'username', password: ''};
-                    $scope.authenticate = function($scope, $http) {
-                        $http.post("API URL", $scope.user)
+                    $scope.authenticate = function($scope) {
+                        $scope.post("API URL", $scope.user)
                         .then(Response => {
                             if(Response.success)
                             {
