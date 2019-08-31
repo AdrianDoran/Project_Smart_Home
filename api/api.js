@@ -35,7 +35,9 @@ app.get('/api/test', (req, res) => {
  * @apiSuccess {String} Authentication request received..
  * @apiError {null} No response.
  */
-app.get('/api/authenticate', (req, res) => {
+app.post('/api/authenticate', (req, res) => {
+    const {username, password} = req.body;
+    console.log(req.body);
     res.send("Authentication request recieved.");
 })
 
