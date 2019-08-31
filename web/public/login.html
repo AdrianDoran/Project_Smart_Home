@@ -2,6 +2,8 @@
    <head>
       <title>Smart Home</title>
       <link rel="stylesheet" href="lib/angular/angular-csp.css">
+      <script src = "lib/angular/angular.js">
+      </script>
    </head>
    <body>
         <script>
@@ -39,17 +41,8 @@
         <button type="button" mdbBtn color="primary" mdbWavesEffect ng-click="authenticate">Login</button>
 
     </form>
-    <hr>
-    <tt>user = {{user}}</tt><br/>
-    <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br/>
-    <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br/>
-    <tt>myForm.password.$valid = {{myForm.lastName.$valid}}</tt><br/>
-    <tt>myForm.password.$error = {{myForm.lastName.$error}}</tt><br/>
-    <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-    <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
   </div> 
       </div>
-      <script src = "lib/angular/angular.js">
-      </script>
+      
    </body>
 </html>
