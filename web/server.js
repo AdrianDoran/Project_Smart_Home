@@ -23,15 +23,11 @@ app.get('/', function(req, res) {
     res.sendFile(`${base}/index.html`);
 })
 
-<<<<<<< HEAD
 app.get('/login', function(req, res) {
     console.log(`Login page loading...`);
     res.sendFile(`${base}/login.html`);
 })
 
-=======
-// Get Error file when error is detected
->>>>>>> 978b42259764a89baa7add21c2666244c369bafc
 app.get('*', (req, res) => {
     console.log('Loading 404.');
     res.sendFile(`${base}/404.html`);
