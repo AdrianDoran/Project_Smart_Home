@@ -1,0 +1,55 @@
+<html>
+   <head>
+      <title>Smart Home</title>
+      <link rel="stylesheet" href="lib/angular/angular-csp.css">
+   </head>
+   <body>
+        <script>
+                angular.module('login', [])
+                  .controller('loginController', ['$scope', function($scope) {
+                    $scope.user = {name: 'username', password: ''};
+                    $scope.authenticate = function($scope, $http) {
+                        $http.post("DATABASE", $scope.user)
+                        .then(Response => {
+                            if(Response.success)
+                            {
+                                $scope.authenticated = true;
+                                var userDetails = $scope.user;
+                            }
+                        }
+                        )
+                    }
+                  }]);
+             </script>
+      <h1>Login</h1>
+      <div ng-controller = "loginController">
+          <form>
+        <label>Username:
+            <input type="text" name="username" ng-model="user.name" required>
+        </label>
+        <div role="alert">
+            <span class="error" ng-show="myForm.username.$error.required">Required!</span>
+        </div>
+        <label>Password:
+            <input type="password" name="password" ng-model="user.password" required>
+        </label>
+        <div role="alert">
+                <span class="error" ng-show="myForm.password.$error.required">Required!</span>
+        </div>
+        <button type="button" mdbBtn color="primary" mdbWavesEffect ng-click="authenticate">Login</button>
+
+    </form>
+    <hr>
+    <tt>user = {{user}}</tt><br/>
+    <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br/>
+    <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br/>
+    <tt>myForm.password.$valid = {{myForm.lastName.$valid}}</tt><br/>
+    <tt>myForm.password.$error = {{myForm.lastName.$error}}</tt><br/>
+    <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+    <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+  </div> 
+      </div>
+      <script src = "lib/angular/angular.js">
+      </script>
+   </body>
+</html>
