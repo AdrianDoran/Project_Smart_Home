@@ -11,7 +11,7 @@
                   .controller('loginController', ['$scope', function($scope) {
                     $scope.user = {name: 'username', password: ''};
                     $scope.authenticate = function($scope, $http) {
-                        $http.post("DATABASE", $scope.user)
+                        $http.post("API URL", $scope.user)
                         .then(Response => {
                             if(Response.success)
                             {
