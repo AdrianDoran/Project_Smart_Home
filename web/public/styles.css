@@ -1,0 +1,53 @@
+/* CSS file for Web Application */
+h1 {
+    font-family: "Arial Narrow Bold";
+    font-size: 200%;
+    text-align: center;
+}
+p {
+    font-family: Arial;
+    font-size: 100%;
+    text-align: center;
+}
+label {
+    font-family: Arial;
+    font-size: 100%;
+    justify-content: center;
+}
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid silver;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.loginbtn {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA; /* Blue */
+}
+
+.loginbtn:hover {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
