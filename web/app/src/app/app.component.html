@@ -1,11 +1,12 @@
-<div class="container" ng-component="app">
-  <form>
-    <div class="form-group">
-      <h1 class="text-center text-primary">Login</h1>
-      <div class="input-group-prepend" > 
-        <input type="text" #username class="form-control" placeholder="Username" name="username">
-        <input type="password" #password class="form-control" placeholder="Password" name="password">
-        <button type="submit" (click)="authenticate(username.value, password.value)">Submit</button> </div>
+
+<!-- main app container -->
+<div class="jumbotron">
+  <a *ngIf="currentUser" class="nav-item nav-link" style="cursor:pointer" (click)="logout()">Logout</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-  </form>
+  </div>
 </div>
