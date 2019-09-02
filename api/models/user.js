@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 module.exports = mongoose.model('User', new mongoose.Schema({
-
     firstName: String,
     lastName: String,
     email: String,

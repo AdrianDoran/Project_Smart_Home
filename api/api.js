@@ -78,19 +78,20 @@ app.post('/api/devices', (req, res) => {
  * @apiError {String} User not found, password incorrect, or raw error message.
  */
 app.post('/api/authenticate', (req, res) => {
-  const {name, password} = req.body;
-  userCheck = User.findOne({name}).then(doc => {
+  const {email, password} = req.body;
+  userCheck = User.findOne({email}).then(doc => {
     if(!doc){ return res.send('User not found.')}
     else if(doc.password == password) 
     { 
+      const firstName = doc.firstName;
       return res.json({
-        success: true,
-        message: 'Authenticated successfully',
-        isAdmin: doc.isAdmin
+        firstName,
+        email,
+        password,
      });
     }
     else{
-      return res.send('Password incorrect.');
+      return res.send("Password Incorrect");
     }
   }).catch(err =>{
     return err
@@ -106,15 +107,18 @@ app.post('/api/authenticate', (req, res) => {
  * @apiError {String} Username taken, or raw error message.
  */
 app.post('/api/register', (req, res) =>{
-  const {name, password, isAdmin} = req.body;
-  User.findOne({name}).then(doc => {
-    if(doc){return res.send('Username taken.')}
+  const {firstName, lastName, email, phone, password} = req.body;
+  User.findOne({email}).then(doc => {
+    if(doc){return res.send('Email already used.')}
     else{
       const newUser = new User({
-        name: name,
-        password,
-        isAdmin
+        firstName,
+        lastName,
+        email,
+        phone,
+        password
        });
+       console.log(newUser)
        newUser.save(err => {
         return err
         ? res.send(err)
