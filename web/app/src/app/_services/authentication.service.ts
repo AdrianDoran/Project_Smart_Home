@@ -20,9 +20,9 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`authenticate`, { email, password })
+        return this.http.post<any>(`api/authenticate`, { email, password })
             .pipe(map(user => {
-                if (user && user.token) {
+                if (user) {
                     // store user details in local storage to keep user logged in
                     localStorage.setItem('currentUser', JSON.stringify(user.result));
                     this.currentUserSubject.next(user);

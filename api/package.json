@@ -1,28 +1,25 @@
 {
-    "name": "affordable-smarthome",
-    "version": "1.0.0",
-    "description": "Backend API Adrian Doran and Ben Hodgson.",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "scripts": {
-        "start": "node ./server.js",
-        "start-dev": "nodemon ./server.js"
-    },
-    "dependencies": {
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.19.0",
-        "cors": "^2.8.4",
-        "express": "^4.17.1",
-        "express-jwt": "^5.3.1",
-        "jsonwebtoken": "^8.5.1",
-        "mongodb": "^3.2.7",
-        "mongoose": "^5.6.9",
-        "rootpath": "^0.1.2"
-    },
-    "devDependencies": {
-        "nodemon": "^1.19.1"
-    }
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Backend api for TrackMe",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r dotenv/config api.js",
+    "doc": "apidoc -o public/generated-docs/ -e node_modules/",
+    "deploy": "now remove 215120652-sit-209 -y && now -p && now alias"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.4"
+  },
+  "devDependencies": {
+    "apidoc": "^0.17.7",
+    "nodemon": "^1.19.1",
+    "now": "^15.8.5"
+  }
 }

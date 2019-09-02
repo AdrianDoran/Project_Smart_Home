@@ -1,0 +1,58 @@
+{
+    "alias": "affordable-smarthome",
+    "name": "affordable-smarthome",
+    "version": 1,
+    "builds": [
+		{ "src": "api.js", "use": "@now/node" },
+		{ "src": "public/generated-docs/**", "use": "@now/static" }
+	],
+	"routes": [
+        {
+          "src": "/docs",
+          "dest": "api.js",
+          "methods": ["GET"]
+        },
+        {
+          "src": "/api/devices/([^/]+)/device-history",
+          "dest": "api.js",
+          "methods": ["GET"]
+        },
+        {
+          "src": "/api/users/([^/]+)/devices",
+          "dest": "api.js",
+          "methods": ["GET"]
+        },
+        {
+          "src": "/api/send-command",
+          "dest": "api.js",
+          "methods": ["POST"]
+        },
+        {
+          "src": "/api/authenticate",
+          "dest": "api.js",
+          "methods": ["POST"]
+        },
+        {
+          "src": "/api/register",
+          "dest": "api.js",
+          "methods": ["POST"]
+        },
+        {
+          "src": "/api/devices",
+          "dest": "api.js",
+          "methods": ["POST", "GET"]
+        },
+        {
+          "src": "/api/users",
+          "dest": "api.js",
+          "methods": ["GET"]
+        },
+        {
+          "src": "/(.*)",
+          "dest": "public/generated-docs/$1"
+        }
+      ],
+    "env": {
+		"MONGO_URL": "mongodb+srv://bhodgs:Bumfaceiscool13@cluster0-meoc4.mongodb.net/test?retryWrites=true&w=majority"
+	}
+  }

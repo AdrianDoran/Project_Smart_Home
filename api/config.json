@@ -1,4 +1,0 @@
-﻿{
-    "connectionString": "mongodb+srv://ben:123@cluster0-wboi0.mongodb.net/test?retryWrites=true&w=majority",
-    "secret": "bhodgs"
-}
