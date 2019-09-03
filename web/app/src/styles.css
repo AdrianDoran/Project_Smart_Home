@@ -18,17 +18,16 @@ p {
     text-align: center;
 }
 
-div[form-group] {
+.form-group {
     font-family: Arial;
-    font-size: 150%;
+    font-size: 100%;
 }
 
-.btn {
-    background-color: #4CAF50; /* Green */
+.btn-group{
+    display: flex;
     border: none;
     color: white;
-    padding: 15px 30px;
-
+    padding: 15px 5px;
     font-size: 16px;
 }
 
