@@ -1,1 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+/* CSS file for Web Application */
+h1 {
+    font-family: "Arial Narrow Bold";
+    font-size: 200%;
+    text-align: center;
+}
+
+h3 {
+    font-family: "Arial Narrow Bold";
+    font-size: 200%;
+    text-align: center;
+}
+
+p {
+    font-family: Arial;
+    font-size: 100%;
+    text-align: center;
+}
+
+div[form-group] {
+    font-family: Arial;
+    font-size: 150%;
+}
+
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 30px;
+
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: #008CBA; /* Blue */
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA; /* Blue */
+}
