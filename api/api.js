@@ -157,8 +157,8 @@ app.get('/api/users', (req, res) => {
  * @apiError {HTML} Raw error.
  */
  app.post('/api/devices', (req, res) => {
-  const { email } = req.params;
-  Device.findAll({ "email": email }, (err, devices) => {
+  const { email } = req.body;
+  Device.find({ "email": email }, (err, devices) => {
     return err
       ? res.send(err)
       : res.send(devices);
