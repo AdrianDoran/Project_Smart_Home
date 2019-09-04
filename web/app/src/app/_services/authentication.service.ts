@@ -3,20 +3,28 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '../_models';
+import { User, Device } from '../_models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+    public currentDeviceSubject: BehaviorSubject<Device>;
+    public currentDevices: Observable<Device>;
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+        this.currentDeviceSubject = new BehaviorSubject<Device>(JSON.parse(localStorage.getItem(`currentDevices`)));
+        this.currentDevices = this.currentDeviceSubject.asObservable();
     }
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
+    }
+
+    public get currentUserDevices(): Device {
+        return this.currentDeviceSubject.value;
     }
 
     login(email: string, password: string) {
@@ -36,5 +44,15 @@ export class AuthenticationService {
         // remove user data from local storage for log out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    getDevices(email: string) {
+        return this.http.post<any>(`api/devices`, {email})
+            .pipe(map(devices => {
+                if(devices) {
+                    localStorage.setItem(`userDevices`, JSON.stringify(devices));
+                    this.currentDeviceSubject.next(devices);
+                }
+            }))
     }
 }
