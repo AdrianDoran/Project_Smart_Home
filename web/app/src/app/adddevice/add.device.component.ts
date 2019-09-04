@@ -18,11 +18,12 @@ export class AddDeviceComponent implements OnInit {
   deviceForm: FormGroup;
   loading = false;
   submitted = false;
-  email = localStorage.getItem('currentUser.email');
+  currentUser = JSON.parse(localStorage.getItem('currentUser'))
+  userEmail = this.currentUser.email;
 
   ngOnInit() {
     this.deviceForm = this.formBuilder.group({
-      email: this.email,
+      email: [this.userEmail],
       name: ['', Validators.required],
       type: ['', Validators.required],
       id: ['', Validators.required]
