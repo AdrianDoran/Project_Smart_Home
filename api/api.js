@@ -158,7 +158,7 @@ app.get('/api/users', (req, res) => {
  */
  app.post('/api/devices', (req, res) => {
   const { email } = req.params;
-  Device.find({ "email": email }, (err, devices) => {
+  Device.findAll({ "email": email }, (err, devices) => {
     return err
       ? res.send(err)
       : res.send(devices);
