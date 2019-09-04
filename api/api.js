@@ -86,8 +86,7 @@ app.post('/api/authenticate', (req, res) => {
       const firstName = doc.firstName;
       return res.json({
         firstName,
-        email,
-        password,
+        email
      });
     }
     else{
