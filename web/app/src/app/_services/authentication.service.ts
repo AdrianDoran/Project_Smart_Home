@@ -53,6 +53,8 @@ export class AuthenticationService {
                     localStorage.setItem(`userDevices`, JSON.stringify(devices));
                     this.currentDeviceSubject.next(devices);
                 }
+
+                return devices;
             }))
     }
 }

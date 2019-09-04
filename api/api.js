@@ -155,7 +155,7 @@ app.get('/api/users', (req, res) => {
  * @apiSuccess {JSON} Device data.
  * @apiError {HTML} Raw error.
  */
- app.get('/api/devices', (req, res) => {
+ app.post('/api/devices', (req, res) => {
   const { email } = req.params;
   Device.find({ "email": email }, (err, devices) => {
     return err
