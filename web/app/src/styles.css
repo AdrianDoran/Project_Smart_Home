@@ -41,3 +41,9 @@ p {
     color: black; 
     border: 2px solid #008CBA; /* Blue */
 }
+
+img.img-responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

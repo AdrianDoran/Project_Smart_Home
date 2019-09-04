@@ -11,7 +11,6 @@ import { User } from '../_models';
   templateUrl: './navbar.component.html'
 })
 
-
 export class NavBarComponent{
     currentUser: User;
     constructor(
