@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './navbar/navbar.component';
+import { AddDeviceComponent } from './adddevice/add.device.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavBarComponent } from './navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    AddDeviceComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { AddDeviceComponent } from './adddevice/add.device.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'register', 
     component: RegisterComponent 
   },
+  { 
+    path: 'adddevice', 
+    component: AddDeviceComponent 
+  },
+
   { path: '**', redirectTo: '' }
 
 ];
