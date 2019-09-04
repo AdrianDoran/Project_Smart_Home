@@ -57,12 +57,13 @@ app.get('/api/devices', (req, res) => {
  * @apiSuccess {String} Identifying success.
  * @apiError {String} Error message.
  */
-app.post('/api/devices', (req, res) => {
-  const { name, user, sensorData } = req.body;
+app.post('/api/newdevice', (req, res) => {
+  const { email, name, data } = req.body;
   const newDevice = new Device({
     name,
     user,
-    sensorData
+    data // Shouldn't be necessary.
+    // We need to have an mqtt server in here for the new device.
   });
   newDevice.save(err => {
     return err
@@ -145,23 +146,7 @@ app.get('/api/users', (req, res) => {
       ? res.send(err)
       : res.send(users);
 }); });
-/**
- * @api {get} /api/devices/:deviceId/device-history' Prints device data.
- * @apiGroup Device
- * @apiParam {String} Device ID.
- * 
- * @apiSuccess {JSON} Device sensor data.
- * @apiError {HTML} Raw error.
- */
-app.get('/api/devices/:deviceId/device-history', (req, res) => {
-  const { deviceId } = req.params;
-  Device.findOne({"_id": deviceId }, (err, devices) => {
-  const { sensorData } = devices;
-    return err
-      ? res.send(err)
-      : res.send(sensorData);
-  });
- });
+
 /**
  * @api {get} /api/users/:user/devices Prints device data for user.
  * @apiGroup User
@@ -170,9 +155,9 @@ app.get('/api/devices/:deviceId/device-history', (req, res) => {
  * @apiSuccess {JSON} Device data.
  * @apiError {HTML} Raw error.
  */
- app.get('/api/users/:user/devices', (req, res) => {
-  const { user } = req.params;
-  Device.find({ "user": user }, (err, devices) => {
+ app.get('/api/devices', (req, res) => {
+  const { email } = req.params;
+  Device.find({ "email": email }, (err, devices) => {
     return err
       ? res.send(err)
       : res.send(devices);
