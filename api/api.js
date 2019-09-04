@@ -57,18 +57,19 @@ app.get('/api/devices', (req, res) => {
  * @apiSuccess {String} Identifying success.
  * @apiError {String} Error message.
  */
-app.post('/api/newdevice', (req, res) => {
-  const { email, name, data } = req.body;
+app.post('/api/adddevice', (req, res) => {
+  const { email, name, id } = req.body;
   const newDevice = new Device({
+    email,
     name,
-    user,
-    data // Shouldn't be necessary.
+    id 
     // We need to have an mqtt server in here for the new device.
+    // Device Verification is important here, will determine data capture types.
   });
   newDevice.save(err => {
     return err
       ? res.send(err)
-      : res.send('successfully added device and data');
+      : res.send(newDevice);
 }); });
 /**
  * @api {post} /api/authenticate Authenticates user upon login.

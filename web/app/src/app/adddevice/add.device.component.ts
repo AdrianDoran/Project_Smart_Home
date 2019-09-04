@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
-import { UserService } from '../_services/user.service';
+import { DeviceService } from '../_services/device.service';
 @Component({
   selector: 'app-adddevice',
   templateUrl: './add.device.component.html'
@@ -13,17 +12,19 @@ export class AddDeviceComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService,
+    private deviceService: DeviceService,
     private toastr: ToastrService
   ) { }
   deviceForm: FormGroup;
   loading = false;
   submitted = false;
+  email = localStorage.getItem('currentUser.email');
 
   ngOnInit() {
     this.deviceForm = this.formBuilder.group({
-      deviceName: ['', Validators.required],
-      deviceType: ['', Validators.required],
+      email: this.email,
+      name: ['', Validators.required],
+      type: ['', Validators.required],
       id: ['', Validators.required]
   });
   }
@@ -36,9 +37,17 @@ export class AddDeviceComponent implements OnInit {
     if (this.deviceForm.invalid) {
       return;
     }
-
-    // CODE to add device to database.
-    
+    this.loading = true;
+    this.deviceService.register(this.deviceForm.value).subscribe(
+      (data)=>{
+        this.toastr.success("Device Registered!")
+        this.router.navigate(['/']);
+     },
+      (error)=>{
+        this.toastr.error(error.error.message, 'Error');
+        this.loading = false;
+      }
+    )
 
   }
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
-import { User } from './_models';
+import { User, Device } from './_models';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ import { User } from './_models';
 })
 export class AppComponent {
   currentUser: User;
+  userDevices: Device;
 
   constructor(
     private router: Router,
