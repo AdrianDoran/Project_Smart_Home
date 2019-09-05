@@ -165,6 +165,12 @@ app.get('/api/users', (req, res) => {
   });
  });
 
+ app.post('/api/devicedata', (req, res) => {
+   const { id } = req.body;
+   // Here use the specific devices model...
+   // Find our data and send.
+ })
+
  app.get('/docs', (req, res) => {
   res.sendFile(`${__dirname}/public/generated-docs/index.html`);
  });
