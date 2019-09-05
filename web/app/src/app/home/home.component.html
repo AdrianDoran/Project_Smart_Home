@@ -4,10 +4,11 @@
 <p>Welcome.</p>
 <div>
     <span>Current Devices</span>
-    <!-- tried to give this a go
-    My thinking on this, is to add the devices into a table or list below is the documentation i was following
-    https://docs.angularjs.org/api/ng/directive/ngRepeat -->
-    <div ng-repeat="item in userDevices.name">
-        {{item}}
-    </div>
+    <!-- https://stackoverflow.com/questions/48021514/how-to-print-angular-object-in-angular-4 -->
+    <ul>
+        <li *ngFor="let userDevices of userDevices"> 
+           {{userDevices.name}}
+        </li>
+      </ul>
+    
 </div>
