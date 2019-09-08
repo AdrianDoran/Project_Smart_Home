@@ -49,7 +49,5 @@ export class AddDeviceComponent implements OnInit {
         this.loading = false;
       }
     )
-
   }
-
 }

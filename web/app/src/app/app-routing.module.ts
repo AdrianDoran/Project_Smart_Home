@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AddDeviceComponent } from './adddevice/add.device.component';
+import { DeviceListComponent } from './devicelist/device.list.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   { 
     path: 'adddevice', 
     component: AddDeviceComponent 
+  },
+  {
+    path: 'devicelist',
+    component: DeviceListComponent
   },
 
   { path: '**', redirectTo: '' }

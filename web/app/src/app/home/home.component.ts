@@ -11,10 +11,9 @@ import { AuthenticationService } from '../_services';
 })
 export class HomeComponent implements OnInit {
   public currentUser;
-  // Need to make a get request to the api to receive device data.
   public userDevices;
   constructor(
-    private formBuilder: FormBuilder,
+      private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService : AuthenticationService,
@@ -34,7 +33,5 @@ export class HomeComponent implements OnInit {
              this.toastr.info("You don't have any devices added.");
            });
   }
-  
+
 }
-
-
