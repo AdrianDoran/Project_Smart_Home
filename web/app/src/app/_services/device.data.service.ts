@@ -19,8 +19,6 @@ export class DeviceDataService {
         return this.currentDeviceSubject.value;
     }
 
-
-
     getData(deviceDataLog: DeviceData) {
         return this.http.post<any>(`api/devicedata`,  deviceDataLog )
             .pipe(map(device => {
