@@ -8,7 +8,8 @@ import { ToastrModule } from 'ngx-toastr';
 // services
 import { InterceptorService } from './_services/interceptor.service';
 import { UserService } from './_services/user.service';
-import { DeviceService } from './_services/device.service'
+import { DeviceService } from './_services/device.service';
+import { DeviceDataService } from './_services/device.data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './navbar/navbar.component';
 import { AddDeviceComponent } from './adddevice/add.device.component';
 import { DeviceListComponent } from './devicelist/device.list.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { DeviceListComponent } from './devicelist/device.list.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],
-  providers: [UserService,DeviceService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }], //
+  providers: [UserService,DeviceService,DeviceDataService,{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }], //
   bootstrap: [AppComponent]
 })
 export class AppModule { }

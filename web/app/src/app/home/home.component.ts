@@ -38,8 +38,6 @@ export class HomeComponent implements OnInit {
         error => {
           this.toastr.info("You don't have any devices added.");
         });
-
-
   }
 
   selectDevice(device: string, data: string) {
