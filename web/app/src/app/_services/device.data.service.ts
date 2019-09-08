@@ -7,7 +7,7 @@ import { DeviceData } from '../_models/devicedata';
 export class DeviceService {
   constructor(private http: HttpClient) { }
 
-  retrieve(deviceData: DeviceData) {
-      return this.http.post(`api/devicedata`, deviceData);
+  retrieve(id: DeviceData) {
+      return this.http.post(`api/devicedata`, id);
     }
   }
