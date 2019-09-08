@@ -12,7 +12,12 @@ import { AuthenticationService } from '../_services';
 export class HomeComponent implements OnInit {
   public currentUser;
   public userDevices;
-  public currentDevice;
+  public currentDevice = {
+    device: "",
+    id: "",
+    data: ""
+  }
+  public id;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -37,8 +42,12 @@ export class HomeComponent implements OnInit {
 
   }
 
-  selectDevice(device: string) {
-    this.currentDevice = device;
-    localStorage.setItem('currentDevice', this.currentDevice);
-  }
+  selectDevice(device: string, data: string) {
+    this.userDevices.forEach(element => { if(element.name == device){ this.id = element.id; }
+    this.currentDevice.device = device;
+    this.currentDevice.data = data;
+    this.currentDevice.id = this.id;
+    localStorage.setItem('currentDevice', JSON.stringify(this.currentDevice));
+  });
+}
 }

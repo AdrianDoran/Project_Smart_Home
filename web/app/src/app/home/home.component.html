@@ -10,7 +10,7 @@
                 <table>
                     <tr *ngFor="let userDevices of userDevices">
                         
-                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name)">
+                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, 'No Data.')">
                             {{userDevices.name}} </button>
                     </tr>
                 </table>

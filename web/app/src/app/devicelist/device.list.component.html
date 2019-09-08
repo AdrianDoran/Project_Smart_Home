@@ -7,13 +7,13 @@
     <table>
         <tr>
             <!-- device type imported here -->
-            <td>Device Type:</td>
-            <td>device type here</td>
+            <td>Device Type: </td>
+            <td>{{currentDevice.name}}</td>
         </tr>
             <!-- deviceId imported here -->
         <tr>
             <td>ID Tag:</td>
-            <td>1234?</td>
+            <td>{{deviceID}}</td>
         </tr>
         <tr>
             <td>.</td>
@@ -23,7 +23,7 @@
                 - RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
                 - Both RFID chipId and logs can be for loops that populate -->
         <tr>
-            <td>data to be decided here</td>
+            <td>{{deviceDataLog}}</td>
         </tr>
         <!-- possible delete data or device can be implemented at the end of this page -->
     </table>
