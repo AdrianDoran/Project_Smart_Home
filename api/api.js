@@ -1,4 +1,5 @@
 const Device = require('./models/device');
+const DeviceData = require('./models/deviceData');
 const User = require('./models/user');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -166,9 +167,21 @@ app.get('/api/users', (req, res) => {
  });
 
  app.post('/api/devicedata', (req, res) => {
-   const { id } = req.body;
-   res.send(`Recieved ${id}`)
- })
+  const {id, device, data} = req.body;
+  deviceCheck = DeviceData.findOne({id}).then(doc => {
+    if(!doc){ return res.send('Device data not found.')}
+    else 
+    { 
+      const data = doc.data;
+      return res.json({
+        id,
+        data
+     });
+    }
+  }).catch(err =>{
+    return err
+  });
+});
 
  app.get('/docs', (req, res) => {
   res.sendFile(`${__dirname}/public/generated-docs/index.html`);

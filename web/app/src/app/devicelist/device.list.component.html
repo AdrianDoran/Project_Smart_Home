@@ -8,12 +8,12 @@
         <tr>
             <!-- device type imported here -->
             <td>Device Type: </td>
-            <td>{{currentDevice.name}}</td>
+            <td>{{currentDevice.device}}</td>
         </tr>
             <!-- deviceId imported here -->
         <tr>
             <td>ID Tag:</td>
-            <td>{{deviceID}}</td>
+            <td>{{currentDevice.id}}</td>
         </tr>
         <tr>
             <td>.</td>
@@ -23,7 +23,7 @@
                 - RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
                 - Both RFID chipId and logs can be for loops that populate -->
         <tr>
-            <td>{{deviceDataLog}}</td>
+            <td>{{currentDevice.data}}</td>
         </tr>
         <!-- possible delete data or device can be implemented at the end of this page -->
     </table>
