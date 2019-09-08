@@ -1,15 +1,20 @@
 <!DOCTYPE html>
+
 <body>
     <h1>Welcome {{currentUser.firstName}}!</h1>
     <p>Select a device below that you would like to view</p>
     <div>
         <h2>Current Devices</h2>
-        <div class="btn-group">
-            <table>
-                <tr *ngFor="let userDevices of userDevices">
-                    <button class="btn btn-devices" routerLink="/devicelist">{{userDevices.name}}</button>
-                </tr>
-            </table>
-        </div>
+      
+            <div class="btn-group">
+                <table>
+                    <tr *ngFor="let userDevices of userDevices">
+                        
+                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name)">
+                            {{userDevices.name}} </button>
+                    </tr>
+                </table>
+            </div>
+
     </div>
 </body>
