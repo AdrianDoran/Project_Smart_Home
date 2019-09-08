@@ -34,9 +34,6 @@ export class HomeComponent implements OnInit {
              this.toastr.info("You don't have any devices added.");
            });
   }
-
-
-
 }
 
 

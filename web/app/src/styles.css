@@ -23,6 +23,10 @@ p {
     font-size: 100%;
 }
 
+.collapse:hover {
+    color: red;
+}
+
 .btn-group{
     display: flex;
     border: none;
@@ -40,6 +44,14 @@ p {
     background-color: white; 
     color: black; 
     border: 2px solid #008CBA; /* Blue */
+}
+
+.btn-devices {
+    color: blue;
+}
+
+.btn-devices:hover {
+    color: blueviolet;
 }
 
 img.img-responsive {
