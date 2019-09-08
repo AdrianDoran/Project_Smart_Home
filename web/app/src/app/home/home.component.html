@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-
-<h1>Welcome {{currentUser.firstName}}!</h1>
-<p>Select a device below that you would like to view</p>
-<div>
-    <h1>Current Devices</h1>
-    <!-- https://stackoverflow.com/questions/48021514/how-to-print-angular-object-in-angular-4 -->
-    <!-- Thinking we need to work on the styling here for good presentation of user devices, and their data (maybe a dropdown?)-->
-    <div class="btn-group">
-        <table>
-            <tr *ngFor="let userDevices of userDevices">
-                <button class="btn btn-devices"> {{userDevices.name}}</button>
-            </tr>
-        </table>
+<body>
+    <h1>Welcome {{currentUser.firstName}}!</h1>
+    <p>Select a device below that you would like to view</p>
+    <div>
+        <h1>Current Devices</h1>
+        <!-- https://stackoverflow.com/questions/48021514/how-to-print-angular-object-in-angular-4 -->
+        <!-- Thinking we need to work on the styling here for good presentation of user devices, and their data (maybe a dropdown?)-->
+        <div class="btn-group">
+            <table>
+                <tr *ngFor="let userDevices of userDevices">
+                    <button class="btn btn-devices"> {{userDevices.name}}</button>
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
+</body>

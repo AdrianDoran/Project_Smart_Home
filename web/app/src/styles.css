@@ -18,12 +18,16 @@ p {
     text-align: center;
 }
 
+.jumbotron, body{
+    background-color: beige;
+}
+
 .form-group {
     font-family: Arial;
     font-size: 100%;
 }
 
-.collapse:hover {
+ul li:hover {
     color: red;
 }
 
