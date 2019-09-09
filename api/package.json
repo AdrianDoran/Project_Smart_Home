@@ -1,15 +1,16 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "Backend api for TrackMe",
+  "description": "Backend api for Affordable Smarthome",
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -r dotenv/config api.js",
     "doc": "apidoc -o public/generated-docs/ -e node_modules/",
-    "deploy": "now remove 215120652-sit-209 -y && now -p && now alias"
+    "now init": "now -p && now alias",
+    "deploy": "now remove affordable-smarthome -y && now -p && now alias"
   },
-  "author": "",
+  "author": "Adrian Doran and Ben Hodgson.",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
