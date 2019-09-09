@@ -1,53 +1,72 @@
 {
-    "alias": "affordable-smarthome",
-    "name": "affordable-smarthome",
-    "version": 2,
-    "builds": [
-		{ "src": "api.js", "use": "@now/node" },
-		{ "src": "public/generated-docs/**", "use": "@now/static" }
-	],
-	"routes": [
-        {
-          "src": "/docs",
-          "dest": "api.js",
-          "methods": ["GET"]
-        },
-        {
-          "src": "/api/authenticate",
-          "dest": "api.js",
-          "methods": ["POST"]
-        },
-        {
-          "src": "/api/devicedata",
-          "dest": "api.js",
-          "methods": ["POST"]
-        },
-        {
-          "src": "/api/adddevice",
-          "dest": "api.js",
-          "methods": ["POST"]
-        },
-        {
-          "src": "/api/register",
-          "dest": "api.js",
-          "methods": ["POST"]
-        },
-        {
-          "src": "/api/devices",
-          "dest": "api.js",
-          "methods": ["POST", "GET"]
-        },
-        {
-          "src": "/api/users",
-          "dest": "api.js",
-          "methods": ["GET"]
-        },
-        {
-          "src": "/(.*)",
-          "dest": "public/generated-docs/$1"
-        }
-      ],
-    "env": {
-		"MONGO_URL": "mongodb+srv://ben:123@cluster0-wboi0.mongodb.net/test?retryWrites=true&w=majority"
-	}
+  "alias": "affordable-smarthome",
+  "name": "affordable-smarthome",
+  "version": 2,
+  "builds": [
+    {
+      "src": "api.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/test",
+      "dest": "api.js",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "src": "/docs",
+      "dest": "api.js",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "src": "/api/authenticate",
+      "dest": "api.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/devicedata",
+      "dest": "api.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/adddevice",
+      "dest": "api.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/register",
+      "dest": "api.js",
+      "methods": [
+        "POST"
+      ]
+    },
+    {
+      "src": "/api/devices",
+      "dest": "api.js",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "src": "/api/users",
+      "dest": "api.js",
+      "methods": [
+        "GET"
+      ]
+    }
+  ],
+  "env": {
+    "MONGO_URL": "mongodb+srv://ben:123@cluster0-wboi0.mongodb.net/test?retryWrites=true&w=majority"
   }
+}

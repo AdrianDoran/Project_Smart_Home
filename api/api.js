@@ -1,6 +1,7 @@
 const Device = require('./models/device');
 const DeviceData = require('./models/deviceData');
 const User = require('./models/user');
+var cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -14,15 +15,15 @@ app.use(bodyParser.json());
 
 app.use(express.static(`${__dirname}/public`));
 
+app.use(cors({
+  credentials: true,
+}));
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  next();
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
 });
-
 
 /**
  * @api {get} /api/test Check if the api is up
@@ -34,9 +35,7 @@ app.use(function(req, res, next) {
 app.get('/api/test', (req, res) => {
   res.send('The API is working!');
 });
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
-});
+
 /**
  * @api {get} /api/devices Gets all devices from mongoDB
  * @apiGroup Devices
