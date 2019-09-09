@@ -51,7 +51,7 @@ app.get('/api/devices', (req, res) => {
       : res.send(devices);
 }); });
 /**
- * @api {post} /api/devices Posts new device to database.
+ * @api {post} /api/adddevice Posts new device to database.
  * @apiGroup Devices
  * @apiParam {JSON} Array of new device and properties.
  * 
@@ -150,11 +150,11 @@ app.get('/api/users', (req, res) => {
 }); });
 
 /**
- * @api {get} /api/users/:user/devices Prints device data for user.
- * @apiGroup User
- * @apiParam {String} Username.
+ * @api {post} Takes post from frontend and returns user devices.
+ * @apiGroup Device
+ * @apiParam {String} Email.
  * 
- * @apiSuccess {JSON} Device data.
+ * @apiSuccess {JSON} Devices.
  * @apiError {HTML} Raw error.
  */
  app.post('/api/devices', (req, res) => {

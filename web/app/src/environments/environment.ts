@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl :'https://affordable-smarthome.now.sh/'
+  apiBaseUrl :'https://affordable-smarthome.bhodgs.now.sh'
 };
 
 /*
