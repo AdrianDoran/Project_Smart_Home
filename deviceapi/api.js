@@ -29,11 +29,13 @@ app.listen(port, () => {
       { 
         const newData = data;
         DeviceData.findOne({id}).then(doc => {
-            doc.data += newData;
-        })
-        return res.json({
-          newData
-       });
+            if(!doc){return res.send("Device ID not found in database.")}
+            else
+            {
+                doc.data.push(newData);
+                doc.save();
+            }
+        });
       }
     }).catch(err =>{
       return err
