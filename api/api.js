@@ -36,42 +36,10 @@ app.get('/api/test', (req, res) => {
   res.send('The API is working!');
 });
 
-/**
- * @api {get} /api/devices Gets all devices from mongoDB
- * @apiGroup Devices
- *
- * @apiSuccess {JSON} Array of devices and attributes.
- * @apiError {String} Error message.
- */
-app.get('/api/devices', (req, res) => {
-  Device.find({}, (err, devices) => {
-    return err
-      ? res.send(err)
-      : res.send(devices);
-}); });
-/**
- * @api {post} /api/adddevice Posts new device to database.
- * @apiGroup Devices
- * @apiParam {JSON} Array of new device and properties.
- * 
- * @apiSuccess {String} Identifying success.
- * @apiError {String} Error message.
- */
-app.post('/api/adddevice', (req, res) => {
-  const { email, name, id } = req.body;
-  const newDevice = new Device({
-    email,
-    name,
-    id 
-    // We need to have an mqtt server in here for the new device.
-    // Device Verification is important here, will determine data capture types.
-  });
-  newDevice.save(err => {
-    return err
-      ? res.send(err)
-      : res.send(newDevice);
-}); });
-/**
+app.get('/docs', (req, res) => {
+  res.sendFile(`${__dirname}/public/generated-docs/index.html`);
+ });
+ /**
  * @api {post} /api/authenticate Authenticates user upon login.
  * @apiGroup User
  * @apiParam {JSON} Array of username and password.
@@ -98,7 +66,44 @@ app.post('/api/authenticate', (req, res) => {
     return err
   });
 });
-
+app.post('/api/devicedata', (req, res) => {
+  const {id, device, data} = req.body;
+  deviceCheck = DeviceData.findOne({id}).then(doc => {
+    if(!doc){ return res.send('Device data not found.')}
+    else 
+    { 
+      const data = doc.data;
+      return res.json({
+        id,
+        data
+     });
+    }
+  }).catch(err =>{
+    return err
+  });
+});
+/**
+ * @api {post} /api/adddevice Posts new device to database.
+ * @apiGroup Devices
+ * @apiParam {JSON} Array of new device and properties.
+ * 
+ * @apiSuccess {String} Identifying success.
+ * @apiError {String} Error message.
+ */
+app.post('/api/adddevice', (req, res) => {
+  const { email, name, id } = req.body;
+  const newDevice = new Device({
+    email,
+    name,
+    id 
+    // We need to have an mqtt server in here for the new device.
+    // Device Verification is important here, will determine data capture types.
+  });
+  newDevice.save(err => {
+    return err
+      ? res.send(err)
+      : res.send(newDevice);
+}); });
 /**
  * @api {post} /api/register Adds new user to database.
  * @apiGroup User
@@ -134,20 +139,18 @@ app.post('/api/register', (req, res) =>{
   })
 })
 /**
- * @api {get} /api/users Prints list of all users in database.
- * @apiGroup Test
- * 
- * 
- * @apiSuccess {JSON} Array of all users and their properties.
- * @apiError {HTML} Raw error.
+ * @api {get} /api/devices Gets all devices from mongoDB
+ * @apiGroup Devices
+ *
+ * @apiSuccess {JSON} Array of devices and attributes.
+ * @apiError {String} Error message.
  */
-app.get('/api/users', (req, res) => {
-  User.find({}, (err, users) => {
+app.get('/api/devices', (req, res) => {
+  Device.find({}, (err, devices) => {
     return err
       ? res.send(err)
-      : res.send(users);
+      : res.send(devices);
 }); });
-
 /**
  * @api {post} Takes post from frontend and returns user devices.
  * @apiGroup Device
@@ -164,24 +167,20 @@ app.get('/api/users', (req, res) => {
       : res.send(devices);
   });
  });
-
- app.post('/api/devicedata', (req, res) => {
-  const {id, device, data} = req.body;
-  deviceCheck = DeviceData.findOne({id}).then(doc => {
-    if(!doc){ return res.send('Device data not found.')}
-    else 
-    { 
-      const data = doc.data;
-      return res.json({
-        id,
-        data
-     });
-    }
-  }).catch(err =>{
+/**
+ * @api {get} /api/users Prints list of all users in database.
+ * @apiGroup Test
+ * 
+ * 
+ * @apiSuccess {JSON} Array of all users and their properties.
+ * @apiError {HTML} Raw error.
+ */
+app.get('/api/users', (req, res) => {
+  User.find({}, (err, users) => {
     return err
-  });
-});
+      ? res.send(err)
+      : res.send(users);
+}); });
 
- app.get('/docs', (req, res) => {
-  res.sendFile(`${__dirname}/public/generated-docs/index.html`);
- });
+
+ 
