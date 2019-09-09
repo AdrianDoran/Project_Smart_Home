@@ -23,21 +23,16 @@ app.listen(port, () => {
 
   app.post('/api/update', (req, res) => {
     const {id, data} = req.body;
-    deviceCheck = Device.findOne({id}).then(doc => {
-      if(!doc){ return res.send('Device data not found.')}
-      else 
-      { 
-        const newData = data;
-        DeviceData.findOne({id}).then(doc => {
+        deviceDataCheck = DeviceData.findOne({id}).then(doc => {
             if(!doc){return res.send("Device ID not found in database.")}
             else
             {
-                doc.data.push(newData);
+                doc.data.push(data);
                 doc.save();
+                res.send("Published.")
             }
-        });
-      }
-    }).catch(err =>{
+        })
+   .catch(err =>{
       return err
     });
   });
