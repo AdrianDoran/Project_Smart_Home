@@ -1,7 +1,7 @@
 {
     "alias": "affordable-smarthome",
     "name": "affordable-smarthome",
-    "version": 1.0,
+    "version": 2,
     "builds": [
 		{ "src": "api.js", "use": "@now/node" },
 		{ "src": "public/generated-docs/**", "use": "@now/static" }
