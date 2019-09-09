@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl :'https://affordable-smarthome.now.sh/'
+  apiBaseUrl :'http://localhost:5000/'
 };
 
 /*

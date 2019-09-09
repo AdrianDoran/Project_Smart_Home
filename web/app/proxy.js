@@ -1,7 +1,7 @@
 var HttpsProxyAgent = require('https-proxy-agent');
 var proxyConfig = [{
   context: '/api',
-  target: 'https://affordable-smarthome.now.sh/',
+  target: 'http://localhost:5000/',
   secure: false
 }];
 

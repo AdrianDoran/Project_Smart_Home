@@ -14,10 +14,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(express.static(`${__dirname}/public`));
+app.use(cors());
+app.options('*', cors());
 
-app.use(cors({
-  credentials: true,
-}));
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
 
