@@ -1,0 +1,20 @@
+{
+  "alias": "affordable-smarthome",
+  "name": "affordable-smarthome",
+  "version": 2,
+  "builds": [
+    {
+      "src": "api.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/update",
+      "dest": "api.js"
+    }
+  ],
+  "env": {
+    "MONGO_URL": "mongodb+srv://ben:123@cluster0-wboi0.mongodb.net/test?retryWrites=true&w=majority"
+  }
+}
