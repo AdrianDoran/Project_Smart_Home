@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
   }
 
 
-    // for accessing to form fields
-    get fval() { return this.loginForm.controls; }
+  // for accessing to form fields
+  get fval() { return this.loginForm.controls }
 
   onFormSubmit() {
     this.submitted = true;

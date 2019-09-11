@@ -46,6 +46,12 @@ ul li:hover {
     font-size: 16px;
 }
 
+.select-group {
+    float:left;
+    padding:10px;
+    margin:0 auto;
+}
+
 .btn-primary {
     background-color: #008CBA; /* Blue */
     color: white;

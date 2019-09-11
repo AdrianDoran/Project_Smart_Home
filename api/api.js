@@ -53,6 +53,9 @@ app.post('/api/authenticate', (req, res) => {
     else if(doc.password == password) 
     { 
       const firstName = doc.firstName;
+      const { datetime } = Date.now();
+      doc.save(err => {
+        datetime}); // need to add MQTT server for data saving
       return res.json({
         firstName,
         email

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 
 <body>
-    <h1>Welcome {{currentUser.firstName}}!</h1>
-    <p>Select a device below that you would like to view</p>
+    <div>
+        <h1>Welcome {{currentUser.firstName}}!</h1>
+        <p>Select a device below that you would like to view</p>
+    </div>
     <div>
         <h2>Current Devices</h2>
-      
             <div class="btn-group">
                 <table>
                     <tr *ngFor="let userDevices of userDevices">
-                        
                         <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, 'No Data.')">
-                            {{userDevices.name}} </button>
+                        {{userDevices.name}} </button>
                     </tr>
                 </table>
             </div>
-
+            <div class="select-group" *ngIf="userDevices">
+                <select ngOptions="selected.userDevice">
+                    <option *ngFor="let userDevice of userDevices" value="userDevice.name" routerLink="/devicelist" (click)="selectDevice(userDevice.name, 'No Data.')">{{userDevice.name}}</option>
+                </select>
+            </div>
     </div>
 </body>
