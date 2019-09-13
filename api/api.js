@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 const port = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({extended: false}));
+mongoose.set('useFindAndModify', false); // Fixes deprecation warnings
 
 app.use(bodyParser.json());
 
@@ -53,13 +54,20 @@ app.post('/api/authenticate', (req, res) => {
     else if(doc.password == password) 
     { 
       const firstName = doc.firstName;
-      const { datetime } = Date.now();
-      doc.save(err => {
-        datetime}); // need to add MQTT server for data saving
+      const loginStamp = new Date();
+      
+      User.findOneAndUpdate({email}, 
+        { $push: {datetime: { date: loginStamp.toDateString(), time: loginStamp.toTimeString() }}}, err => {
+        if(err){ console.log(err) }
+        else{ // DEBUG MODE
+          //console.log(email);
+          //console.log(loginStamp.toTimeString());
+        }
+      });
       return res.json({
         firstName,
         email
-     });
+      });
     }
     else{
       return res.send("Password Incorrect");
