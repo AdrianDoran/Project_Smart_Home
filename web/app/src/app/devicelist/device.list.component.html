@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
 <!-- h3 to display selected devices name -->
 <h3>Data Information</h3> 
 
@@ -22,7 +25,7 @@
             <!-- data to be put here can be:
                 - RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
                 - Both RFID chipId and logs can be for loops that populate -->
-        
+        <div id=""></div>
             <tr *ngFor="let data of currentDevice.data">
                 <button class="btn btn-data">
                 {{data}} </button>
