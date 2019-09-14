@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceDataService } from '../_services/device.data.service';
+import * as Plotly from 'plotly.js';
 @Component({
     selector: 'app-devicelist',
     templateUrl: './device.list.component.html'
@@ -28,19 +29,22 @@ export class DeviceListComponent implements OnInit {
     }
 
     ngOnInit() {
-
+      
         this.deviceService.getData(this.currentDevice)
         .subscribe(
           data => {
             this.toastr.success("Data retreived.");
-            // Work with data here.
-            this.deviceDataLog = data;
+            // TEST
+            /* var mapData: Plotly.Data[] = [{
+              type: "scattermapbox"
+            }]
+            */
           },
           error => {
             this.toastr.info("Couldn't get device data.");
           });
-          var Plotly = require('plotly.js/dist/plotly.js')("benhodgson", "zoIPhYNR1Phltwtx48Sp");
-          var mapbox; 
+          
+          
 
     }
 }

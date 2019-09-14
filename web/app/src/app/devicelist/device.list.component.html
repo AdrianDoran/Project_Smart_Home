@@ -26,10 +26,9 @@
             <!-- data to be put here can be:
                 - RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
                 - Both RFID chipId and logs can be for loops that populate -->
-        <div id=""></div>
-            <tr *ngFor="let data of currentDevice.data">
-                <button class="btn btn-data">
-                {{data}} </button>
+        
+            <tr >
+                <div id="graph"></div>
             </tr>
         
         <!-- possible delete data or device can be implemented at the end of this page -->
