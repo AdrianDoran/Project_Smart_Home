@@ -2,12 +2,12 @@
 
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' /> -->
 </head>
 <!-- h3 to display selected devices name -->
 <h3>Data Information</h3> 
 
-<div>
+<div id="device-info">
     <table>
         <tr>
             <!-- device type imported here -->
@@ -20,17 +20,15 @@
             <td>{{currentDevice.id}}</td>
         </tr>
         <tr>
-            <td>.</td>
-        </tr>
-            <!-- undecided data input here -->
-            <!-- data to be put here can be:
-                - RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
-                - Both RFID chipId and logs can be for loops that populate -->
-        
-            <tr >
-                <div id="graph"></div>
-            </tr>
-        
-        <!-- possible delete data or device can be implemented at the end of this page -->
+            <td></td>
+        </tr>    
     </table>
 </div>
+<!-- undecided data input here -->
+<!-- data to be put here can be:
+- RFID chipId with datetime logs of when it was 'tapped' or if the tag is logged in or out
+- Both RFID chipId and logs can be for loops that populate -->
+
+<div id="graph" style="width: 600px; height: 250px"></div>
+
+<!-- possible delete data or device can be implemented at the end of this page -->

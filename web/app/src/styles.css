@@ -71,6 +71,12 @@ ul li:hover {
     color: blueviolet;
 }
 
+.device-info {
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-rows: auto;
+}
+
 img.img-responsive {
     display: block;
     margin-left: auto;
