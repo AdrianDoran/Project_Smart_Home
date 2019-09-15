@@ -77,6 +77,24 @@ ul li:hover {
     grid-auto-rows: auto;
 }
 
+a.persona {
+    color: darkslategrey;
+}
+
+a.persona:visited {
+    color: maroon;
+}
+
+a.persona:hover, a.persona:visited:hover {
+    color: rgb(0, 89, 255);
+    text-shadow: #008CBA;
+    text-decoration: underline;
+}
+
+.footer, .navbar {
+    height: 4em;
+}
+
 img.img-responsive {
     display: block;
     margin-left: auto;
