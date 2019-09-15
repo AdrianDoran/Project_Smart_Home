@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceDataService } from '../_services/device.data.service';
@@ -18,7 +17,6 @@ export class DeviceListComponent implements OnInit {
     public mapboxgl;
 
     constructor(
-        private router: Router,
         private deviceService: DeviceDataService,
         private toastr: ToastrService,
         private deviceData: DeviceDataService
@@ -34,7 +32,6 @@ export class DeviceListComponent implements OnInit {
         .subscribe(
           data => {
             this.toastr.success("Data retreived.");
-            // TEST
             this.mapChart(); // To make the function work.
           },
           error => {

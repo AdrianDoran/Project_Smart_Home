@@ -26,7 +26,6 @@ export class DeviceDataService {
                     localStorage.setItem(`currentDevice`, JSON.stringify(device));
                     this.currentDeviceSubject.next(device);
                 }
-
                 return device;
             }))
     }

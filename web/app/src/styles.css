@@ -1,33 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
 /* CSS file for Web Application */
-h1 {
-    font-family: "Arial Narrow Bold";
-    font-size: 200%;
-    text-align: center;
-}
+/* You can add global/local styles to this file, and also import other style files */
 
-h2 {
-    font-family: "Arial Narrow Bold";
-    font-style: italic;
-    font-size: 150%;
-    text-align: center;
-}
-
-h3 {
-    font-family: "Arial Narrow Bold";
-    font-size: 200%;
-    text-align: center;
-}
-
-p {
-    font-family: Arial;
-    font-size: 100%;
-    text-align: center;
-}
-
-.jumbotron, body{
-    background-color: beige;
-}
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
 
 .form-group {
     font-family: Arial;
@@ -77,6 +52,7 @@ ul li:hover {
     grid-auto-rows: auto;
 }
 
+/* Footer Settings */
 a.persona {
     color: darkslategrey;
 }
@@ -91,7 +67,36 @@ a.persona:hover, a.persona:visited:hover {
     text-decoration: underline;
 }
 
-.footer, .navbar {
+.footer-tag {
+    font-family: Cambria;
+    -ms-text-size-adjust: auto;
+}
+
+/* Global Settings */
+h2 {
+    font-family: "Calibri Body";
+    font-style: italic;
+    font-size: 200%;
+    text-align: center;
+}
+
+h3 {
+    font-family: "Calibri Body";
+    font-style: italic;
+    font-size: 200%;
+    text-align: center;
+}
+
+.p {
+    font-family: Arial;
+    text-align: center;
+}
+
+.jumbotron, body{
+    background-color: aliceblue;
+}
+
+.footer{
     height: 4em;
 }
 

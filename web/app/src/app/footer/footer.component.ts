@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../_services';
+import { User } from '../_models';
 
 @Component({
     selector: 'app-footer',
@@ -6,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent{
     today: number = Date.now();
+    currentUser: User;
+    constructor(
+        private authenticationService: AuthenticationService
+    ) { this.authenticationService.currentUser.subscribe(x => this.currentUser = x);}
 }
