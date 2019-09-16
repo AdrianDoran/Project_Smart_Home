@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private toastr: ToastrService
   ) {
-    this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
     this.userDevices = localStorage.getItem('userDevices') ? JSON.parse(localStorage.getItem('userDevices')) : '';
+    this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
   }
 
   ngOnInit() {
@@ -46,6 +46,6 @@ export class HomeComponent implements OnInit {
     this.currentDevice.data = data;
     this.currentDevice.id = this.id;
     localStorage.setItem('currentDevice', JSON.stringify(this.currentDevice));
-  });
-}
+    });
+  }
 }

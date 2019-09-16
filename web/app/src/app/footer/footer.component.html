@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 
 <footer>
-    <div class="footer navbar-expand-lg fixed-bottom" style="background-color: silver">
+    <div class="footer footer-expand-lg fixed-bottom" style="background-color: silver">
         <span class="footer-login">
             <div>
-                <!-- Last Logged In: INSERT USER DATETIME HERE -->
+                {{currentUser}}
             </div>
             <div>
                 <!-- Amount of Total Sign-Ins: INSERT TOTAL SIGN IN HERE // look at implementing a animation to count up -->
             </div>
             <div *ngIf="currentUser" class="footer-tag">
-                Brought to you by <a class="persona" href='https://github.com/AdrianDoran'>Adrian Doran</a> and <a class="persona" href='https://github.com/bhodgs'>Ben Hodgson</a>.
+                Brought to you by <a class="persona" href='https://github.com/AdrianDoran'>Adrian Doran</a> 
+                                    and <a class="persona" href='https://github.com/bhodgs'>Ben Hodgson</a>.
                 Copyright &copy; {{ today | date: 'yyyy' }}.
             </div>
             <div *ngIf="!currentUser" class="footer-tag">

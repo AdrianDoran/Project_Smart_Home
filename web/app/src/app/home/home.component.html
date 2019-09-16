@@ -9,16 +9,12 @@
         <h3>Current Devices</h3>
             <div class="btn-group">
                 <table>
-                    <tr *ngFor="let userDevices of userDevices">
-                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, 'No Data.')">
-                        {{userDevices.name}} </button>
+                    <!-- userDevices does not load first time of page, investigation needed -->
+                    <tr *ngFor="let userDevice of userDevices">
+                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevice.name, userDevice.data)">
+                        {{userDevice.name}} </button>
                     </tr>
                 </table>
-            </div>
-            <div class="select-group" *ngIf="userDevices">
-                <select ngOptions="selected.userDevice">
-                    <option *ngFor="let userDevice of userDevices" value="userDevice.name" routerLink="/devicelist" (click)="selectDevice(userDevice.name, userDevice.Data)">{{userDevice.name}}</option>
-                </select>
             </div>
     </div>
 </body>

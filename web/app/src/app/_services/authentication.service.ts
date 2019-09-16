@@ -35,25 +35,26 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
-
                 return user;
             }));
     }
 
     logout() {
-        // remove user data from local storage for log out
+        // remove user&device data from local storage for log out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('userDevices');
+        localStorage.removeItem('currentDevice');
         this.currentUserSubject.next(null);
+        this.currentDeviceSubject.next(null);
     }
 
     getDevices(email: string) {
-        return this.http.post<any>(`api/devices`, {email})
+        return this.http.post<any>(`api/devices`, { email })
             .pipe(map(devices => {
-                if(devices) {
+                if (devices) {
                     localStorage.setItem(`userDevices`, JSON.stringify(devices));
                     this.currentDeviceSubject.next(devices);
                 }
-
                 return devices;
             }))
     }
