@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { Device } from '../_models/device';
 import { DeviceDataService } from '../_services/device.data.service';
 import * as Plotly from 'plotly.js-mapbox-dist';
 @Component({
@@ -38,17 +38,22 @@ export class DeviceListComponent implements OnInit {
             this.toastr.success("Data retreived.");
             // Work with data here.
             this.deviceDataLog = data;
-            this.mapChart();
+            this.mapChart(data);
           },
           error => {
             this.toastr.info("Couldn't get device data.");
           });
     }
-    public mapChart() { // This should work, still a mystery on why not though
+    public mapChart(data: Device) { // This should work, still a mystery on why not though
+      var latString;
+      var lonString;
+      data.data.forEach(element => {latString += element.lat.toString + ","});
+      data.data.forEach(element => {lonString += element.lon.toString + ","});
+
       var mapData = [{ //: Plotly.Data[]
         type: 'scattermapbox',
-        lat: ['-25'],
-        lon: ['-134'],
+        lat: [latString],
+        lon: [lonString],
         mode: 'markers',
         marker: { size: 14 },
         text: ['Autralia']
@@ -59,8 +64,8 @@ export class DeviceListComponent implements OnInit {
         mapbox: {
           bearing: 0,
           center: {
-            lat: -25,
-            lon: -133
+            lat: data.data[length].lat,
+            lon: data.data[length].lon
           },
           pitch: 0,
           zoom: 2
