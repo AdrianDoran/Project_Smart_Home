@@ -104,7 +104,8 @@ app.post('/api/adddevice', (req, res) => {
   const newDevice = new Device({
     email,
     name,
-    id 
+    id,
+    data: ""
     // We need to have an mqtt server in here for the new device.
     // Device Verification is important here, will determine data capture types.
   });
