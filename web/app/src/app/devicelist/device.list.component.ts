@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+
 import { DeviceDataService } from '../_services/device.data.service';
-import * as Plotly from 'plotly.js-mapbox-dist';;
+import * as Plotly from 'plotly.js-mapbox-dist';
 @Component({
     selector: 'app-devicelist',
     templateUrl: './device.list.component.html'
@@ -17,6 +19,7 @@ export class DeviceListComponent implements OnInit {
     public mapboxgl;
 
     constructor(
+        private router: Router,
         private deviceService: DeviceDataService,
         private toastr: ToastrService,
         private deviceData: DeviceDataService
@@ -28,18 +31,20 @@ export class DeviceListComponent implements OnInit {
     }
 
     ngOnInit() {
+
         this.deviceService.getData(this.currentDevice)
         .subscribe(
           data => {
             this.toastr.success("Data retreived.");
-            this.mapChart(); // To make the function work.
+            // Work with data here.
+            this.deviceDataLog = data;
+            this.mapChart();
           },
           error => {
             this.toastr.info("Couldn't get device data.");
           });
     }
-
-    mapChart() { // This should work, still a mystery on why not though
+    public mapChart() { // This should work, still a mystery on why not though
       var mapData = [{ //: Plotly.Data[]
         type: 'scattermapbox',
         lat: ['-25'],
