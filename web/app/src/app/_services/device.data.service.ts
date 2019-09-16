@@ -3,23 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DeviceData } from '../_models/devicedata';
+import { Device } from '../_models/device';
 
 @Injectable({ providedIn: 'root' })
 export class DeviceDataService {
-    private currentDeviceSubject: BehaviorSubject<DeviceData>;
-    public currentDevice: Observable<DeviceData>;
+    private currentDeviceSubject: BehaviorSubject<Device>;
+    public currentDevice: Observable<Device>;
 
     constructor(private http: HttpClient) {
-        this.currentDeviceSubject = new BehaviorSubject<DeviceData>(JSON.parse(localStorage.getItem('currentDevice')));
+        this.currentDeviceSubject = new BehaviorSubject<Device>(JSON.parse(localStorage.getItem('currentDevice')));
         this.currentDevice = this.currentDeviceSubject.asObservable();
     }
 
-    public get currentDeviceValue(): DeviceData {
+    public get currentDeviceValue(): Device {
         return this.currentDeviceSubject.value;
     }
 
-    getData(deviceDataLog: DeviceData) {
+    getData(deviceDataLog: Device) {
         return this.http.post<any>(`api/devicedata`,  deviceDataLog )
             .pipe(map(device => {
                 if(device) {

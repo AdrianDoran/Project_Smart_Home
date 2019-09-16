@@ -1,5 +1,4 @@
 const Device = require('./models/device');
-const DeviceData = require('./models/deviceData');
 const User = require('./models/user');
 var cors = require('cors');
 const express = require('express');
