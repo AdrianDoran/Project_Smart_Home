@@ -53,6 +53,7 @@ app.post('/api/authenticate', (req, res) => {
     else if(doc.password == password) 
     { 
       const firstName = doc.firstName;
+      const datetime = doc.datetime;
       const loginStamp = new Date();
       
       User.findOneAndUpdate({email}, 
@@ -65,7 +66,8 @@ app.post('/api/authenticate', (req, res) => {
       });
       return res.json({
         firstName,
-        email
+        email,
+        datetime
       });
     }
     else{
