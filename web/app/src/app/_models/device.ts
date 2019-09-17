@@ -6,6 +6,7 @@ export class Device{
     data: [{
         lat: Number,
         lon: Number,
-        time: String
+        time: String,
+        entry: Boolean
     }];
 }

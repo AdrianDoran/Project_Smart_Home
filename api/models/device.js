@@ -6,6 +6,7 @@ module.exports = mongoose.model('Device', new mongoose.Schema({
   data: [{
     lat: Number,
     lon: Number,
-    time: String
+    time: String,
+    entry: Boolean
 }] // data to the collection, this can contain information like datetime stamp, lat and lon, tag number.
 }));
