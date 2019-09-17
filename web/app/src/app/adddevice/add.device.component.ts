@@ -25,7 +25,6 @@ export class AddDeviceComponent implements OnInit {
     this.deviceForm = this.formBuilder.group({
       email: [this.userEmail],
       name: ['', Validators.required],
-      type: ['', Validators.required],
       id: ['', Validators.required]
   });
   }
@@ -42,6 +41,7 @@ export class AddDeviceComponent implements OnInit {
     this.deviceService.register(this.deviceForm.value).subscribe(
       (data)=>{
         this.toastr.success("Device Registered!")
+        localStorage.setItem('userDevices', JSON.stringify(data));
         this.router.navigate(['/']);
      },
       (error)=>{

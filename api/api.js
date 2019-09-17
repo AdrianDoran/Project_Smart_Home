@@ -78,20 +78,17 @@ app.post('/api/authenticate', (req, res) => {
   });
 });
 app.post('/api/devicedata', (req, res) => {
-  const {id, device, data} = req.body;
-  deviceCheck = DeviceData.findOne({id}).then(doc => {
-    if(!doc){ return res.send('Device data not found.')}
-    else 
-    { 
-      const data = doc.data;
-      return res.json({
-        id,
-        data
-     });
-    }
-  }).catch(err =>{
-    return err
-  });
+  const {id, data} = req.body;
+  deviceDataCheck = Device.findOne({id}).then(doc => {
+      if(!doc){return res.send("Device ID not found in database.")}
+      else
+      {
+          res.json(doc)
+      }
+  })
+.catch(err =>{
+return err
+});
 });
 /**
  * @api {post} /api/adddevice Posts new device to database.
@@ -103,11 +100,11 @@ app.post('/api/devicedata', (req, res) => {
  */
 app.post('/api/adddevice', (req, res) => {
   const { email, name, id } = req.body;
+  console.log("Adding device...");
   const newDevice = new Device({
     email,
     name,
-    id,
-    data: ""
+    id
     // We need to have an mqtt server in here for the new device.
     // Device Verification is important here, will determine data capture types.
   });
@@ -115,7 +112,7 @@ app.post('/api/adddevice', (req, res) => {
   newDevice.save(err => {
     return err
       ? res.send(err)
-      : res.send(newDevice) && newDeviceData.save();  
+      : res.send(newDevice);  
 });
 
     

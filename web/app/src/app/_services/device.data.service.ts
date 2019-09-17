@@ -19,8 +19,8 @@ export class DeviceDataService {
         return this.currentDeviceSubject.value;
     }
 
-    getData(deviceDataLog: Device) {
-        return this.http.post<any>(`api/devicedata`,  deviceDataLog )
+    getData(device: Device) {
+        return this.http.post<any>(`api/devicedata`, device )
             .pipe(map(device => {
                 if(device) {
                     localStorage.setItem(`currentDevice`, JSON.stringify(device));

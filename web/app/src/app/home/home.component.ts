@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private toastr: ToastrService
   ) {
-    this.userDevices = localStorage.getItem('userDevices') ? JSON.parse(localStorage.getItem('userDevices')) : '';
     this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
   }
 
@@ -34,16 +33,17 @@ export class HomeComponent implements OnInit {
       .subscribe(
         data => {
           this.toastr.success("Devices retrieved.");
+          localStorage.setItem('userDevices', JSON.stringify(data));
+          this.userDevices = JSON.parse(localStorage.getItem('userDevices'));
         },
         error => {
           this.toastr.info("You don't have any devices added.");
         });
   }
 
-  selectDevice(device: string, data: string) {
+  selectDevice(device: string) {
     this.userDevices.forEach(element => { if(element.name == device){ this.id = element.id; }
     this.currentDevice.device = device;
-    this.currentDevice.data = data;
     this.currentDevice.id = this.id;
     localStorage.setItem('currentDevice', JSON.stringify(this.currentDevice));
     });

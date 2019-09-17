@@ -21,18 +21,21 @@ app.listen(port, () => {
   
 
   app.post('/api/update', (req, res) => {
-    const {id, data} = req.body;
-        deviceDataCheck = Device.findOne({id}).then(doc => {
-            if(!doc){return res.send("Device ID not found in database.")}
-            else
-            {
-                data.time = Date.now();
-                doc.data.push({data});
-                doc.save();
-                res.send("Published.")
-            }
-        })
-   .catch(err =>{
-      return err
-    });
-  });
+    const id = req.params.id;
+    const requestString = toString(req.body);
+    const data = JSON.parse(requestString);
+    data.time = Date.now().toString();
+
+    Device.findOneAndUpdate(
+      id,
+      { $push: {"data": data}},
+      {  safe: true, upsert: true},
+        function(err, data) {
+          if(err){
+           console.log(err);
+           return res.send(err);
+          }
+           return res.json(data);
+       });
+        });
+

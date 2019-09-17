@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Device } from '../_models/device';
 import { DeviceDataService } from '../_services/device.data.service';
 import * as Plotly from 'plotly.js-mapbox-dist';
+import { DeviceService } from '../_services';
 @Component({
     selector: 'app-devicelist',
     templateUrl: './device.list.component.html'
@@ -20,9 +21,9 @@ export class DeviceListComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private deviceService: DeviceDataService,
+        private deviceDataService: DeviceDataService,
         private toastr: ToastrService,
-        private deviceData: DeviceDataService
+        private deviceService: DeviceService
     ) {
         // Possibly use the stored device we want instead of using the whole set of devices.
         this.userDevices = JSON.parse(localStorage.getItem('userDevices'));
@@ -32,25 +33,25 @@ export class DeviceListComponent implements OnInit {
 
     ngOnInit() {
 
-        this.deviceService.getData(this.currentDevice)
+        this.deviceDataService.getData(this.currentDevice)
         .subscribe(
           data => {
             this.toastr.success("Data retreived.");
             // Work with data here.
             this.deviceDataLog = data;
-            this.mapChart(data);
+            this.mapChart(this.deviceDataLog);
           },
           error => {
             this.toastr.info("Couldn't get device data.");
           });
     }
-    public mapChart(data: Device) { // This should work, still a mystery on why not though
+    public mapChart(data: Device) { 
       var latString;
       var lonString;
       data.data.forEach(element => {latString += element.lat.toString + ","});
       data.data.forEach(element => {lonString += element.lon.toString + ","});
 
-      var mapData = [{ //: Plotly.Data[]
+      var mapData = [{ 
         type: 'scattermapbox',
         lat: [latString],
         lon: [lonString],

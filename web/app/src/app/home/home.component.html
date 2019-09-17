@@ -10,12 +10,12 @@
             <div class="btn-group">
                 <table>
                     <!-- userDevices does not load first time of page, investigation needed -->
-                    <tr *ngFor="let userDevice of userDevices">
-                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevice.name, userDevice.data)">
-                        {{userDevice.name}} </button>
+                    <tr *ngFor="let userDevices of userDevices">
+                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, userDevices.data)">
+                        {{userDevices.name}} </button>
                     </tr>
                 </table>
             </div>
-            <div class="showSQ"></div>
+            <!-- <div class="showSQ"></div> -->
     </div>
 </body>
