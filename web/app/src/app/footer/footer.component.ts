@@ -18,8 +18,9 @@ export class FooterComponent{
     ) { 
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
         this.currentUser = localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : '';
-        localStorage.setItem('lastLoginNumber', JSON.stringify(this.currentUser.datetime.length - 1));
         this.date = this.currentUser.datetime;
-        this.dL = localStorage.getItem('lastLoginNumber') ? JSON.parse(localStorage.getItem('lastLoginNumber')) : '';
+    //     var arrayLength = this.date.length-1;
+    //     localStorage.setItem('lastLoginNumber', JSON.stringify(arrayLength));
+    //     this.dL = localStorage.getItem('lastLoginNumber') ? JSON.parse(localStorage.getItem('lastLoginNumber')) : '';
     }
 }

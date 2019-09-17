@@ -1,16 +1,21 @@
 <!DOCTYPE html>
+<!-- 
+<head>
+  <script src="background.js"></script>
+</head> -->
 
 <!-- main app container -->
 <app-navbar></app-navbar>
-<div class="jumbotron" ng-cloak>
-<img class="img-responsive" src="assets/img/Smart Home Logo.png">
-
-  <div class="container">
-    <div class="row">   
-      <div class="col-md-4 offset-md-4">
-        <router-outlet></router-outlet>
+<body>
+  <div class="jumbotron" ng-cloak>
+    <img class="img-responsive" src="assets/img/Smart Home Logo.png">
+    <div class="container">
+      <div class="row">   
+        <div class="col-md-4 offset-md-4">
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</body>
 <app-footer></app-footer>
