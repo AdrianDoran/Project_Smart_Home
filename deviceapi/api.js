@@ -26,6 +26,7 @@ app.listen(port, () => {
             if(!doc){return res.send("Device ID not found in database.")}
             else
             {
+                data.time = Date.now();
                 doc.data.push({data});
                 doc.save();
                 res.send("Published.")
