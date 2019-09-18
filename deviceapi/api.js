@@ -22,9 +22,8 @@ app.listen(port, () => {
 
   app.post('/api/update', (req, res) => {
     const id = req.params.id;
-    const requestString = toString(req.body);
-    const data = JSON.parse(requestString);
-    data.time = Date.now().toString();
+    const data = req.body;
+    data["time"] = Date.now().toString();
 
     Device.findOneAndUpdate(
       id,
