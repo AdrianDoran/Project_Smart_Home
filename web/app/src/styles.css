@@ -15,11 +15,12 @@ ul li:hover {
 }
 
 .btn-group{
-    display: flex;
+    display: grid;
     border: none;
     color: white;
     padding: 15px 5px;
     font-size: 16px;
+    align-content: center;
 }
 
 .select-group {
@@ -39,19 +40,31 @@ ul li:hover {
     border: 2px solid #008CBA; /* Blue */
 }
 
-.btn-devices {
+.btn-devices{
     color: cornflowerblue;
+    display: grid;
+    grid-auto-columns: center;
+    grid-auto-rows: center;
 }
 
 .btn-devices:hover {
     color: blueviolet;
+    display: grid;
+    grid-auto-columns: center;
+    grid-auto-rows: center;
+}
+
+/* Device List Settings */
+
+#graph {
+    align-content: left;
 }
 
 .device-info {
     color: azure;
     display: grid;
-    grid-auto-columns: max-content;
-    grid-auto-rows: auto;
+    grid-auto-columns: max-content space;
+    grid-auto-rows: max-content space;
 }
 
 /* Footer Settings */
@@ -71,10 +84,13 @@ a.persona:hover, a.persona:visited:hover {
 
 .footer-tag {
     font-family: Cambria;
-    -ms-text-size-adjust: auto;
 }
 
 /* Global Settings */
+.container {
+    align-content: center;
+}
+
 h2 {
     color: azure;
     font-family: "Calibri Body";
@@ -91,9 +107,11 @@ h3 {
     text-align: center;
 }
 
-.p {
+p {
     color: azure;
-    font-family: Arial;
+    font-family: "Calibri Body";
+    font-style: italic;
+    font-size: 80%;
     text-align: center;
 }
 

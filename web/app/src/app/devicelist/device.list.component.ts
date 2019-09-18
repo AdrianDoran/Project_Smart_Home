@@ -65,6 +65,7 @@ export class DeviceListComponent implements OnInit {
         hovermode: 'closest',
         mapbox: {
           bearing: 0,
+          zoom: 5,
           center: {
             lat: data.data[length].lat,
             lon: data.data[length].lon
@@ -82,7 +83,7 @@ export class DeviceListComponent implements OnInit {
         showlegend: false,
           breakpoints: [],
           pitch: 0,
-          zoom: 2
+          zoom: 0
       }
       Plotly.setPlotConfig({
         mapboxAccessToken: 'pk.eyJ1IjoiYWRvcmFuIiwiYSI6ImNrMGtjeG8zdTBrOTEzbW8zZnZzcXF3bXAifQ.WFTjF80_lvSOd9uroe6igw'

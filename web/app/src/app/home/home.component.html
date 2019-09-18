@@ -3,16 +3,20 @@
 <body>
     <div>
         <span><h2>Welcome {{currentUser.firstName}}!</h2></span>
-        <span class="p">Select a device below that you would like to view</span>
+        <p>
+            Select a device below that you would like to view
+        </p>
     </div>
     <div>
         <h3>Current Devices</h3>
-            <div class="btn-group">
+            <div>
                 <table>
-                    <!-- userDevices does not load first time of page, investigation needed -->
+                    <!-- userDevices does not load first time of page, investigation needed  -->
                     <tr *ngFor="let userDevices of userDevices">
-                        <button class="btn btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, userDevices.data)">
-                        {{userDevices.name}} </button>
+                        <td>
+                            <button class="btn btn-devices" id="btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, userDevices.data)">
+                                {{userDevices.name}} </button>
+                        </td>
                     </tr>
                 </table>
             </div>
