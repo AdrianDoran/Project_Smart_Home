@@ -46,18 +46,19 @@ export class DeviceListComponent implements OnInit {
           });
     }
     public mapChart(data: Device) { 
-      var latString;
-      var lonString;
-      data.data.forEach(element => {latString += element.lat.toString + ","});
-      data.data.forEach(element => {lonString += element.lon.toString + ","});
-
+      var latArr = [{}];
+      var lonArr = [{}];
+      var textArr = [{}];
+      data.data.forEach(element => {latArr.push(element.lat)});
+      data.data.forEach(element => {lonArr.push(element.lon)});
+      data.data.forEach(element => {textArr.push("Card: " + element.cardID + " " + element.entry)});
       var mapData = [{ 
         type: 'scattermapbox',
-        lat: [latString],
-        lon: [lonString],
+        lat: latArr,
+        lon: lonArr,
         mode: 'markers',
-        marker: { size: 14 },
-        text: ['Autralia']
+        marker: { size: 15 },
+        text: textArr
       }]
       var layout = {
         autosize: true,
@@ -68,14 +69,25 @@ export class DeviceListComponent implements OnInit {
             lat: data.data[length].lat,
             lon: data.data[length].lon
           },
+          
+          
+        },
+        margin: {
+          r: 0,
+          t: 0,
+          b: 0,
+          l: 0,
+          pad: 0
+        },
+        showlegend: false,
+          breakpoints: [],
           pitch: 0,
           zoom: 2
-        },
       }
       Plotly.setPlotConfig({
         mapboxAccessToken: 'pk.eyJ1IjoiYWRvcmFuIiwiYSI6ImNrMGtjeG8zdTBrOTEzbW8zZnZzcXF3bXAifQ.WFTjF80_lvSOd9uroe6igw'
       })
 
-      Plotly.plot('graph', mapData, layout) // graph is the DIV id on the HTML
+      Plotly.plot('graph', mapData, layout, { responsive: true }) // graph is the DIV id on the HTML
     }
 }
