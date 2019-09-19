@@ -18,6 +18,7 @@ export class DeviceListComponent implements OnInit {
     public deviceType;
     public deviceDataLog;
     public mapboxgl;
+    public cardNames;
 
     constructor(
         private router: Router,
@@ -44,6 +45,9 @@ export class DeviceListComponent implements OnInit {
           error => {
             this.toastr.info("Couldn't get device data.");
           });
+
+  
+
     }
     public mapChart(data: Device) { 
       var latArr = [{}];
@@ -51,7 +55,7 @@ export class DeviceListComponent implements OnInit {
       var textArr = [{}];
       data.data.forEach(element => {latArr.push(element.lat)});
       data.data.forEach(element => {lonArr.push(element.lon)});
-      data.data.forEach(element => {textArr.push("Card: " + element.cardID + " " + element.entry)});
+      data.data.forEach(element => {textArr.push("Card: " + element.cardID + " " + element.entry + " " + this.deviceDataService.getName(element.cardID))});
       var mapData = [{ 
         type: 'scattermapbox',
         lat: latArr,
@@ -71,6 +75,7 @@ export class DeviceListComponent implements OnInit {
             lon: data.data[length].lon
           },
           
+          style: 'dark',
           
         },
         margin: {
@@ -80,6 +85,8 @@ export class DeviceListComponent implements OnInit {
           l: 0,
           pad: 0
         },
+        paper_bgcolor: '#191A1A',
+        plot_bgcolor: '#191A1A',
         showlegend: false,
           breakpoints: [],
           pitch: 0,
@@ -92,3 +99,5 @@ export class DeviceListComponent implements OnInit {
       Plotly.plot('graph', mapData, layout, { responsive: true }) // graph is the DIV id on the HTML
     }
 }
+
+

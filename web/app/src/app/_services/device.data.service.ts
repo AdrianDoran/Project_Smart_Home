@@ -29,4 +29,14 @@ export class DeviceDataService {
                 return device;
             }))
     }
+
+    getName(cardID: String) {
+        return this.http.post<any>(`api/getcard`, cardID)
+        .pipe(map(cardName => {
+            if(cardName) {
+                localStorage.setitem(`currentDeviceData`, JSON.stringify({cardName, cardID}));
+            }
+            return cardName;
+        }))
+    }
 }
