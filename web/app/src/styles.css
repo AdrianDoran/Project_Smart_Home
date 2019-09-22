@@ -134,6 +134,8 @@ img.img-responsive {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 25%;
+    height: 25%;
     opacity: 1;
     transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;
