@@ -44,6 +44,7 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('userDevices');
         localStorage.removeItem('currentDevice');
+        localStorage.removeItem('currentCards');
         this.currentUserSubject.next(null);
         this.currentDeviceSubject.next(null);
     }

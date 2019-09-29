@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<h3>Your New Card</h3>
+<form [formGroup]="cardForm" (ngSubmit)="onFormSubmit()">
+  <div class="form-group">
+    <label for="name">Card Name</label>
+        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.name.errors }" placeholder="Anything you like..."/>
+        <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
+            <div *ngIf="fval.name.errors.required">Device Name is required.</div>
+        </div>
+  </div>
+  <div class="form-group">
+    <label for="id">Card ID</label>
+    <input type="text" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.id.errors }" placeholder="Enter your cards ID here."/>
+    <div *ngIf="submitted && fval.id.errors" class="invalid-feedback">
+        <div *ngIf="fval.id.errors.required">id is required</div>
+        <div *ngIf="fval.id.errors.id">Enter valid id address</div>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button [disabled]="loading" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Add Card
+    </button>
+</div>
+</form>

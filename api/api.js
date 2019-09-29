@@ -194,6 +194,28 @@ app.get('/api/users', (req, res) => {
       ? res.send(err)
       : res.send(users);
 }); });
-
+/**
+ * @api {post} /api/addcard Adds card to a device
+ * @apiGroup Device
+ * 
+ * 
+ * @apiSuccess {JSON} Array of data for the device.
+ * @apiError {HTML} Raw error.
+ */
+app.post('/api/addcard', (req, res) => {
+  const {deviceID, id, name} = req.body;
+  Device.findOneAndUpdate(
+    deviceID,
+    { $push: {"data.cardlist": {id, name}}},
+    { safe: true, upsert: true},
+    function(err, data) {
+      if(err){
+        console.log(err);
+        return res.send(err);
+      }
+      return res.json(data);
+    }
+  )
+})
 
  
