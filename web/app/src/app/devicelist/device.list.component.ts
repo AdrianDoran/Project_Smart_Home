@@ -74,9 +74,7 @@ export class DeviceListComponent implements OnInit {
             lat: data.data[length].lat,
             lon: data.data[length].lon
           },
-          
           style: 'dark',
-          
         },
         margin: {
           r: 0,
