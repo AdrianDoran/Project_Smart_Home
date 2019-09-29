@@ -1,3 +1,4 @@
+const urlParams = require('url-search-params-polyfill');
 const Device = require('./models/device');
 var cors = require('cors');
 const express = require('express');
@@ -11,6 +12,7 @@ var cards = [];
 var touch = [];
 
 app.use(bodyParser.urlencoded({extended: false}));
+mongoose.set('useFindAndModify', false);
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -18,26 +20,26 @@ app.options('*', cors());
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`);
-  });
-
+  console.log(`listening on port ${port}`);
+});
 
 app.post('/api/update', (req, res) => {
-  const id = req.params.id;
-  const data = req.body;
-  data["time"] = Date.now().toString();
-  const isTouched = touchCard(data.cardID);
-  data["entry"] = isTouched;
-  Device.findOneAndUpdate(
-    id,
-    { $push: {"data": data}},
+  const search = urlParams(location.search)
+  const id = search.id;
+  const dataNew = req.body;
+  const isTouched = touchCard(dataNew.cardID);
+  dataNew["time"] = Date.now().toString();
+  dataNew["entry"] = isTouched;
+
+  Device.findOneAndUpdate({id},
+    { $push: {"data": dataNew}},
     {  safe: true, upsert: true},
-    function(err, data) {
+    err => {
       if(err){
         console.log(err);
         return res.send(err);
       }
-        return res.json(data);
+      return res.json(id);
     }
   );
 });
