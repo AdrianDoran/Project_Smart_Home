@@ -19,6 +19,7 @@ import { NavBarComponent } from './navbar/navbar.component';
 import { AddDeviceComponent } from './adddevice/add.device.component';
 import { DeviceListComponent } from './devicelist/device.list.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddCardComponent } from './newcard/add.card.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { FooterComponent } from './footer/footer.component';
     NavBarComponent,
     HomeComponent,
     DeviceListComponent,
+    AddCardComponent,
     FooterComponent
   ],
   imports: [

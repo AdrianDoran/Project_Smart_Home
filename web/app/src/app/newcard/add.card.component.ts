@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DeviceService } from '../_services/device.service';
 @Component({
-  selector: 'app-adddevice',
-  templateUrl: './add.device.component.html'
+  selector: 'app-addcard',
+  templateUrl: './add.card.component.html'
 })
-export class AddDeviceComponent implements OnInit {
+export class AddCardComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
