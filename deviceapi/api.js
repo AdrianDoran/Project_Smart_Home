@@ -1,22 +1,19 @@
-const urlParams = require('url-search-params-polyfill');
 const Device = require('./models/device');
 var cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-
-var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
 var cards = [];
 var touch = [];
 
-app.use(bodyParser.urlencoded({extended: false}));
-mongoose.set('useFindAndModify', false);
-
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 app.use(cors());
 app.options('*', cors());
+
+mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.listen(port, () => {
@@ -24,8 +21,7 @@ app.listen(port, () => {
 });
 
 app.post('/api/update', (req, res) => {
-  const search = urlParams(location.search)
-  const id = search.id;
+  const id = req.query.id;
   const dataNew = req.body;
   const isTouched = touchCard(dataNew.cardID);
   dataNew["time"] = Date.now().toString();
