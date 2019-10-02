@@ -26,6 +26,7 @@ app.post('/api/update', (req, res) => {
   const isTouched = touchCard(dataNew.cardID);
   dataNew["time"] = Date.now().toString();
   dataNew["entry"] = isTouched;
+  dataNew["name"] = "";
 
   Device.findOneAndUpdate({id},
     { $push: {"data": dataNew}},
