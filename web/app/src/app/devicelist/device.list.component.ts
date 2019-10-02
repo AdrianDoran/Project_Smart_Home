@@ -60,7 +60,7 @@ export class DeviceListComponent implements OnInit {
         type: 'scattermapbox',
         lat: latArr,
         lon: lonArr,
-        mode: 'markers',
+        mode: 'lines',
         marker: { size: 15 },
         text: textArr
       }]
