@@ -228,20 +228,30 @@ app.post('/api/addcard', (req, res) => {
 });
 
 
-app.post('api/getcards', (req, res) => {
+app.post('/api/getcards', (req, res) => {
   const {deviceID} = req.body;
   const id = deviceID;
+  const cardList = [{
+    cardName: String,
+    cardID: String
+  }];
   console.log("Got request.")
   Device.findOne({id}).then(doc =>{
     if(doc){
       console.log("Found Device.");
-      res.send({})
-      
-    }else{res.send("Card ID not found.")}
+      doc.data.forEach(function(element){
+        var currentCardID = element.cardID;
+        var currentCardName = element.cardName;
+        cardList.push({"cardID": currentCardID, "cardName": currentCardName});
+      });
+      res.send(cardList);
+  }else{res.send("Card ID not found.")}
   
   
 });
 });
+
+
 
 
  
