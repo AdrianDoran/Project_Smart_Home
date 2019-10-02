@@ -10,7 +10,7 @@ export class DeviceService {
   register(device: Device) {
       return this.http.post(`api/adddevice`, device);
     }
-  setCard(any) {
-    return this.http.post(`api/addcard`, any);
+  setCard(data) {
+    return this.http.post(`api/addcard`, data);
   }
   }

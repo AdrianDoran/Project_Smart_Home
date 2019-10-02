@@ -203,19 +203,45 @@ app.get('/api/users', (req, res) => {
  * @apiError {HTML} Raw error.
  */
 app.post('/api/addcard', (req, res) => {
-  const {deviceID, id, cardName} = req.body;
-  Device.findOneAndUpdate(
-    deviceID,
-    { $push: {"data.cardlist": {id, cardName}}},
-    { safe: true, upsert: true},
-    function(err, data) {
-      if(err){
-        console.log(err);
-        return res.send(err);
-      }
-      return res.json(data);
-    }
-  )
-})
+  const {deviceID, cardID, cardName} = req.body;
+  const id = deviceID;
+  console.log("Got request.")
+  Device.findOne({id}).then(doc =>{
+    if(doc){
+      console.log("Found Device.");
+      doc.data.forEach(function(element){
+        if(cardID == element.cardID){
+          element.cardName = cardName;
+        }
+      });
+      doc.save(err => {
+        return err
+        ? res.send(err)
+        : res.json(
+          {cardID, cardName}
+        );
+    });
+  }else{res.send("Card ID not found.")}
+  
+  
+});
+});
+
+
+app.post('api/getcards', (req, res) => {
+  const {deviceID} = req.body;
+  const id = deviceID;
+  console.log("Got request.")
+  Device.findOne({id}).then(doc =>{
+    if(doc){
+      console.log("Found Device.");
+      res.send({})
+      
+    }else{res.send("Card ID not found.")}
+  
+  
+});
+});
+
 
  
