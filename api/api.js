@@ -203,10 +203,10 @@ app.get('/api/users', (req, res) => {
  * @apiError {HTML} Raw error.
  */
 app.post('/api/addcard', (req, res) => {
-  const {deviceID, id, name} = req.body;
+  const {deviceID, id, cardName} = req.body;
   Device.findOneAndUpdate(
     deviceID,
-    { $push: {"data.cardlist": {id, name}}},
+    { $push: {"data.cardlist": {id, cardName}}},
     { safe: true, upsert: true},
     function(err, data) {
       if(err){

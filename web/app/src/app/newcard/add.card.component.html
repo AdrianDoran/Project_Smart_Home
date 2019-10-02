@@ -3,8 +3,8 @@
 <h3>Your New Card</h3>
 <form [formGroup]="cardForm" (ngSubmit)="onFormSubmit()">
   <div class="form-group">
-    <label for="name">Card Name</label>
-        <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.name.errors }" placeholder="Anything you like..."/>
+    <label for="cardName">Card Name</label>
+        <input type="text" formControlName="cardName" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.name.errors }" placeholder="Anything you like..."/>
         <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
             <div *ngIf="fval.name.errors.required">Device Name is required.</div>
         </div>

@@ -24,7 +24,7 @@ export class AddCardComponent implements OnInit {
   ngOnInit() {
     this.cardForm = this.formBuilder.group({
       deviceID: [this.currentDeviceID],
-      name: ['', Validators.required],
+      cardName: ['', Validators.required],
       id: ['', Validators.required]
   });
   }

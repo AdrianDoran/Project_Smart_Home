@@ -4,6 +4,7 @@ module.exports = mongoose.model('Device', new mongoose.Schema({
   name: String,
   id: Number,
   data: [{
+    cardName: String,
     cardID: String,
     lat: Number,
     lon: Number,
