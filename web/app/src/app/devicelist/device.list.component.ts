@@ -119,7 +119,7 @@ export class DeviceListComponent implements OnInit {
         barmode: 'group'
       };
       
-      Plotly.plot("graph2", barData, layout, function (err,msg){
+      Plotly.plot("graph2", this.barChart, layout, function (err,msg){
         console.log(msg);
       }); // graph2 is the DIV id on the HTML
     }
