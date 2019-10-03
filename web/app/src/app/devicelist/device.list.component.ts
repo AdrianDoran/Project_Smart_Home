@@ -100,26 +100,28 @@ export class DeviceListComponent implements OnInit {
 
     public barChart(data: Device) {
       var nameArr = [{}];
-      var nameLength = [{}];
-      data.data.forEach(element => {nameArr.push(element.cardID)});
-  
-      var barData = [
-        {
-          x: ["giraffes", "orangutans", "monkeys"],
-          y: [20, 14, 23],
-          type: "bar"
-        }
-      ];
+      
+      data.data.forEach(val => {
+          var barData = {
+          x: [val["data.data.cardName"]],
+          y: [val["data.data.length"]],
+          name: val["currentDevice"],
+          type: 'bar'
+        };
+        nameArr.push(barData);
+      });
 
       Plotly.setPlotConfig({
         mapboxAccessToken: 'pk.eyJ1IjoiYWRvcmFuIiwiYSI6ImNrMGtjeG8zdTBrOTEzbW8zZnZzcXF3bXAifQ.WFTjF80_lvSOd9uroe6igw'
       });
 
-      var graphOptions = {filename: "basic-bar", fileopt: "overwrite"};
+      var layout = {
+        barmode: 'group'
+      };
       
-      Plotly.plot("graph2", barData, graphOptions, function (err,msg){
+      Plotly.plot("graph2", barData, layout, function (err,msg){
         console.log(msg);
-      });
+      }); // graph2 is the DIV id on the HTML
     }
 }
 
