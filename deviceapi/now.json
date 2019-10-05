@@ -1,6 +1,6 @@
 {
-  "alias": "affordable-smarthome",
-  "name": "affordable-smarthome",
+  "alias": "affordable-smarthome-device",
+  "name": "affordable-smarthome-device",
   "version": 2,
   "builds": [
     {

@@ -64,7 +64,21 @@
       "methods": [
         "GET"
       ]
-    }
+    },
+    {
+    "src": "/api/addcard",
+    "dest": "api.js",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "src": "/api/getcards",
+    "dest": "api.js",
+    "methods": [
+      "POST"
+    ]
+  }
   ],
   "env": {
     "MONGO_URL": "mongodb+srv://ben:123@cluster0-wboi0.mongodb.net/test?retryWrites=true&w=majority"
