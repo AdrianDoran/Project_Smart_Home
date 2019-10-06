@@ -6,6 +6,7 @@ import { Device } from '../_models/device';
 import { DeviceDataService } from '../_services/device.data.service';
 import * as Plotly from 'plotly.js-mapbox-dist';
 import { DeviceService } from '../_services';
+import { plot } from 'plotly.js';
 @Component({
     selector: 'app-devicelist',
     templateUrl: './device.list.component.html'
@@ -60,7 +61,7 @@ export class DeviceListComponent implements OnInit {
         type: 'scattermapbox',
         lat: latArr,
         lon: lonArr,
-        mode: 'lines',
+        mode: 'markers+lines',
         marker: { size: 15 },
         text: textArr
       }]
@@ -69,7 +70,7 @@ export class DeviceListComponent implements OnInit {
         hovermode: 'closest',
         mapbox: {
           bearing: 0,
-          zoom: 5,
+          zoom: 10,
           center: {
             lat: data.data[length].lat,
             lon: data.data[length].lon
@@ -95,6 +96,32 @@ export class DeviceListComponent implements OnInit {
       })
 
       Plotly.plot('graph', mapData, layout, { responsive: true }) // graph is the DIV id on the HTML
+    }
+
+    public barChart(data: Device) {
+      var nameArr = [{}];
+      
+      data.data.forEach(val => {
+          var barData = {
+          x: [val["data.data.cardName"]],
+          y: [val["data.data.length"]],
+          name: val["currentDevice"],
+          type: 'bar'
+        };
+        nameArr.push(barData);
+      });
+
+      Plotly.setPlotConfig({
+        mapboxAccessToken: 'pk.eyJ1IjoiYWRvcmFuIiwiYSI6ImNrMGtjeG8zdTBrOTEzbW8zZnZzcXF3bXAifQ.WFTjF80_lvSOd9uroe6igw'
+      });
+
+      var layout = {
+        barmode: 'group'
+      };
+      
+      Plotly.plot("graph2", this.barChart, layout, function (err,msg){
+        console.log(msg);
+      }); // graph2 is the DIV id on the HTML
     }
 }
 
