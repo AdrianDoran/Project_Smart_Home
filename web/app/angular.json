@@ -115,8 +115,12 @@
               "devServerTarget": "affordable-smarthome:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@zeit/ng-deploy:deploy"
         }
       }
-    }},
+    }
+  },
   "defaultProject": "affordable-smarthome"
 }

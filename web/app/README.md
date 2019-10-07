@@ -1,5 +1,18 @@
 # AffordableSmarthome
 
+Welcome. FInd the developer instructions below:
+
+## Cloning
+To clone this project, simply use the "Clone or download" option, run `npm i` on the root folder (/app).
+
+Here is a list of the npm scripts:
+    `"ng": "ng",`
+    `"start": "ng serve",`
+   ` "build": "ng build",`
+   ` "test": "ng test",`
+   ` "lint": "ng lint",`
+    `"e2e": "ng e2e"`
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 ## Development server
