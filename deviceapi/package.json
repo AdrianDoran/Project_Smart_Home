@@ -13,6 +13,7 @@
   "author": "Adrian Doran and Ben Hodgson",
   "license": "ISC",
   "dependencies": {
+    "apidoc": "^0.17.7",
     "cors": "^2.8.5",
     "now": "^16.2.0",
     "url-search-params-polyfill": "^7.0.0"
