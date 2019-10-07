@@ -15,4 +15,4 @@ That is everything that is needed for the particle Photon to communicate with th
 
 **
 ## FOR DEVS:
-    - If there are issues with CORS, both of the API's can be run locally- replace the ApiBase url within the frontend (there's only two references), and replace it with the main api's local address. There shouldn't be issues with the device api as it only communicates with the particle photon.
+    If there are issues with CORS, both of the API's can be run locally- replace the ApiBase url within the frontend (there's only two references), and replace it with the main api's local address. There shouldn't be issues with the device api as it only communicates with the particle photon.
