@@ -1,0 +1,17 @@
+{
+    "event": "UID",
+    "url": "https://affordable-smarthome-device.bhodgs.now.sh/api/update",
+    "requestType": "POST",
+    "noDefaults": true,
+    "rejectUnauthorized": true,
+    "json": {
+        "cardID": "{{UID}}",
+        "lat": "{{lat}}",
+        "lon": "{{lon}}",
+        "time": "{{time}}",
+        "entry": "{{entry}}"
+    },
+    "query": {
+        "id": "172651736513"
+    }
+}
