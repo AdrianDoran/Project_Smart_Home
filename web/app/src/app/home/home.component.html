@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 
 <body>
-    <div>
-        <span><h2>Welcome {{currentUser.firstName}}!</h2></span>
-        <p>
-            Select a device below that you would like to view
-        </p>
-    </div>
-    <div>
+    <div class="home-wrapper">
+        <div>
+            <span>
+                <h2>Welcome {{currentUser.firstName}}!</h2>
+            </span>
+            <p>
+                Select a device below that you would like to view
+            </p>
+        </div>
         <h3>Current Devices</h3>
-            <div>
-                <table>
-                    <!-- userDevices does not load first time of page, investigation needed  -->
-                    <tr *ngFor="let userDevices of userDevices">
-                        <td>
-                            <button class="btn btn-devices" id="btn-devices" routerLink="/devicelist" (click)="selectDevice(userDevices.name, userDevices.data)">
-                                {{userDevices.name}} </button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+        <div class="home-wrapper__devices">
+            <table>
+                <!-- userDevices does not load first time of page, investigation needed  -->
+                <tr *ngFor="let userDevices of userDevices">
+                    <td>
+                        <button class="btn btn-devices" id="btn-devices" routerLink="/devicelist"
+                            (click)="selectDevice(userDevices.name, userDevices.data)">
+                            {{userDevices.name}} </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
