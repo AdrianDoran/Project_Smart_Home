@@ -4,33 +4,38 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <!-- h3 to display selected devices name -->
-<h3>Data Information</h3> 
+<h3>Data Information</h3>
+<div class="col-12">
+    <div class="data-list">
+        <div class='row'>
+            <table>
+                <tr>
+                    <!-- device type imported here -->
+                    <td>Device Type: </td>
+                    <td>{{currentDevice.name}}</td>
+                </tr>
+                <tr>
+                    <!-- deviceId imported here -->
+                    <td>ID Tag:</td>
+                    <td>{{currentDevice.id}}</td>
+                </tr>
+                <br>
+                <tr *ngFor="let data of currentDevice.data; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>Card Name: {{data.cardName}}</td>
+                    <td>Card ID: {{data.cardID}}</td>
+                    <td>Location: {{data.lat}},{{data.lon}} </td>
+                    <td>Timestamp: {{ data.time | date:'dd/MM/yyyy @ hh:mma'}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-<div class="device-info">
-    <table>
-        <tr>
-            <!-- device type imported here -->
-            <td>Device Type: </td>
-            <td>{{currentDevice.name}}</td>
-        </tr>
-        <tr>
-            <!-- deviceId imported here -->
-            <td>ID Tag:</td>
-            <td>{{currentDevice.id}}</td>
-        </tr>
-        <br>
-        <tr *ngFor="let data of currentDevice.data; let i = index">
-            <td>{{i+1}}</td>
-            <td>Card Name: {{data.cardName}}</td>
-            <td>Card ID:  {{data.cardID}}</td>
-            <td>Location: {{data.lat}},{{data.lon}} </td>
-            <td>Timestamp: {{ data.time | date:'dd/MM/yyyy @ hh:mma'}}</td>
-        </tr>
-    </table>
+    <br>
+    <!-- MapBox with Plot.ly services -->
+    <div class='row'>
+    <div id="graph" class="map"></div>
 </div>
-<br>
-<!-- MapBox with Plot.ly services -->
-<div id="graph" style="width: 100%; height: 300%"></div>
 
-<div id="graph2" style="width: 100%; height: 300%"></div>
-            
+    <div id="graph2" style="width: 100%; height: 300%"></div>
+</div>
