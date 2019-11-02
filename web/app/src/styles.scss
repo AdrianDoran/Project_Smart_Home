@@ -30,7 +30,6 @@ ul li:hover {
     height: auto;
 }
 .data-list{
-
     display: block;
     margin: auto;
     text-align: center;
@@ -40,6 +39,10 @@ ul li:hover {
 table{
     display: block;
     margin: auto;
+}
+td{
+    padding-top: 10px; 
+
 }
 .svg-container{
     border-radius: 10px !important;
