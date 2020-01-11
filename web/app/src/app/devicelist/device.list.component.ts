@@ -28,9 +28,10 @@ export class DeviceListComponent implements OnInit {
         private deviceService: DeviceService
     ) {
         // Possibly use the stored device we want instead of using the whole set of devices.
+        this.currentDevice = JSON.parse(localStorage.getItem('currentDevice'));
         this.userDevices = JSON.parse(localStorage.getItem('userDevices'));
         this.currentUser =  JSON.parse(localStorage.getItem('currentUser'));
-        this.currentDevice = JSON.parse(localStorage.getItem('currentDevice'));
+  
     }
 
     ngOnInit() {

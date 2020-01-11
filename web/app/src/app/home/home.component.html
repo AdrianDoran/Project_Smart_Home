@@ -16,7 +16,7 @@
                 <!-- userDevices does not load first time of page, investigation needed  -->
                 <tr *ngFor="let userDevices of userDevices">
                     <td>
-                        <button class="btn btn-devices" id="btn-devices" routerLink="/devicelist"
+                        <button id="btn-devices" routerLink="/devicelist"
                             (click)="selectDevice(userDevices.name, userDevices.data)">
                             {{userDevices.name}} </button>
                     </td>
